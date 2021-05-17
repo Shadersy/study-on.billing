@@ -1,3 +1,22 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+register:
+    path: /api/v1/register
+    controller: App\Controller\AuthController::register
+    methods: POST
+
+api:
+    path: /api
+    controller: App\Controller\AuthController::api
+
+login_check:
+    path: /api/v1/auth
+    methods:  [POST]
+    
+app.swagger_ui:
+    path: /api/doc
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
+main:
+    path: /
+    methods: GET
+    controller: App\Controller\AuthController::main
+
