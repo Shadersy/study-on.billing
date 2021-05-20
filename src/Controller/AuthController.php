@@ -57,18 +57,12 @@ class AuthController extends AbstractController
         return new JsonResponse(['token' => $JWTManager->create($user)]);
     }
 
-    public function api()
+    public function api() : ?JsonResponse
     {
 
+        $arr = array('balance' => $this->getUser()->getBalance());
 
-
-        $response = array(
-            'status' => true,
-            'message' => 'Success',
-            'data' => $this->getUser()->getBalance()
-        );
-
-        return new JsonResponse(json_encode($response));
+        return new JsonResponse($this->getUser()->getBalance());
 
     }
 }

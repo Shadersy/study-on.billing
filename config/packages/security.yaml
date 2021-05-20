@@ -39,7 +39,6 @@ security:
             provider: entity_provider        
         api:
             pattern:  ^/api
-            stateless: true
             anonymous: false
             provider: entity_provider
             guard:
