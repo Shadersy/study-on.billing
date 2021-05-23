@@ -3,8 +3,6 @@ security:
         App\Entity\User:
             algorithm: auto
 
-
-
     providers:
        
         entity_provider:

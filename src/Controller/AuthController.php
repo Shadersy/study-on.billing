@@ -42,6 +42,7 @@ class AuthController extends AbstractController
 
         $errors = $validator->validate($userDto);
 
+
             if(count($errors) > 0){
                 $errorsString = (string) $errors;
 
@@ -50,7 +51,6 @@ class AuthController extends AbstractController
 
             $user = User::fromDto($userDto);
             $em->persist($user);
-
             $em->flush();
 
 
