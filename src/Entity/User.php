@@ -52,6 +52,8 @@ class User implements UserInterface
      * @ORM\Column(type="float", nullable=true)
      */
     private $balance;
+
+
     
     public function getId(): ?int
     {
@@ -66,7 +68,6 @@ class User implements UserInterface
     public function setEmail(?string $email): self
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -139,6 +140,7 @@ class User implements UserInterface
         $user = new User();
         $users[] = 'ROLE_USER';
         $user->setEmail($dto->getEmail());
+
         $user->setPassword(password_hash($dto->getPassword(), PASSWORD_DEFAULT));
         $user->setRoles($users);
         $user->setBalance(rand(0, 1000) / 10);
@@ -159,4 +161,6 @@ class User implements UserInterface
 
         return $this;
     }
+
+
 }

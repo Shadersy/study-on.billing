@@ -8,6 +8,10 @@ return [
     'register' => [[], ['_controller' => 'App\\Controller\\AuthController::register'], [], [['text', '/api/v1/register']], [], []],
     'api' => [[], ['_controller' => 'App\\Controller\\AuthController::api'], [], [['text', '/api']], [], []],
     'login_check' => [[], [], [], [['text', '/api/v1/auth']], [], []],
+    'refresh' => [[], ['_controller' => 'App\\Controller\\AuthController::refresh'], [], [['text', '/api/v1/token/refresh']], [], []],
+    'pay' => [['code'], ['_controller' => 'App\\Controller\\AuthController::doPayment'], [], [['text', '/pay'], ['variable', '/', '[^/]++', 'code', true], ['text', '/api/v1/courses']], [], []],
+    'course' => [['code'], ['_controller' => 'App\\Controller\\AuthController::showCourse'], [], [['variable', '/', '[^/]++', 'code', true], ['text', '/api/v1/courses']], [], []],
+    'courses' => [[], ['_controller' => 'App\\Controller\\AuthController::courseList'], [], [['text', '/api/v1/courses']], [], []],
     'app.swagger_ui' => [[], ['_controller' => 'nelmio_api_doc.controller.swagger_ui'], [], [['text', '/api/doc']], [], []],
     'main' => [[], ['_controller' => 'App\\Controller\\AuthController::main'], [], [['text', '/']], [], []],
 ];

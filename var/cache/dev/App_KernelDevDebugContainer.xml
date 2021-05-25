@@ -20,6 +20,7 @@
       <parameter key="NelmioApiDocBundle">Nelmio\ApiDocBundle\NelmioApiDocBundle</parameter>
       <parameter key="TwigBundle">Symfony\Bundle\TwigBundle\TwigBundle</parameter>
       <parameter key="TwigExtraBundle">Twig\Extra\TwigExtraBundle\TwigExtraBundle</parameter>
+      <parameter key="GesdinetJWTRefreshTokenBundle">Gesdinet\JWTRefreshTokenBundle\GesdinetJWTRefreshTokenBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -65,6 +66,10 @@
       <parameter key="TwigExtraBundle" type="collection">
         <parameter key="path">/app/vendor/twig/extra-bundle</parameter>
         <parameter key="namespace">Twig\Extra\TwigExtraBundle</parameter>
+      </parameter>
+      <parameter key="GesdinetJWTRefreshTokenBundle" type="collection">
+        <parameter key="path">/app/vendor/gesdinet/jwt-refresh-token-bundle</parameter>
+        <parameter key="namespace">Gesdinet\JWTRefreshTokenBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -201,11 +206,13 @@
       <parameter>login</parameter>
       <parameter>register</parameter>
       <parameter>api</parameter>
+      <parameter>refresh</parameter>
     </parameter>
     <parameter key="security.app.swagger_ui._indexed_authenticators" type="collection"/>
     <parameter key="security.login._indexed_authenticators" type="collection"/>
     <parameter key="security.register._indexed_authenticators" type="collection"/>
     <parameter key="security.api._indexed_authenticators" type="collection"/>
+    <parameter key="security.refresh._indexed_authenticators" type="collection"/>
     <parameter key="lexik_jwt_authentication.pass_phrase">%env(JWT_PASSPHRASE)%</parameter>
     <parameter key="lexik_jwt_authentication.token_ttl">3600</parameter>
     <parameter key="lexik_jwt_authentication.clock_skew">0</parameter>
@@ -220,6 +227,17 @@
       <parameter>form_div_layout.html.twig</parameter>
     </parameter>
     <parameter key="twig.default_path">/app/templates</parameter>
+    <parameter key="gesdinet_jwt_refresh_token.ttl">2592000</parameter>
+    <parameter key="gesdinet_jwt_refresh_token.ttl_update">false</parameter>
+    <parameter key="gesdinet_jwt_refresh_token.security.firewall">api</parameter>
+    <parameter key="gesdinet_jwt_refresh_token.user_provider">null</parameter>
+    <parameter key="gesdinet_jwt_refresh_token.user_identity_field">username</parameter>
+    <parameter key="gesdinet_jwt_refresh_token.single_use">false</parameter>
+    <parameter key="gesdinet_jwt_refresh_token.token_parameter_name">refresh_token</parameter>
+    <parameter key="gesdinet_jwt_refresh_token.doctrine_mappings">true</parameter>
+    <parameter key="gesdinet.jwtrefreshtoken.refresh_token.class">Gesdinet\JWTRefreshTokenBundle\Entity\RefreshToken</parameter>
+    <parameter key="gesdinet.jwtrefreshtoken.object_manager.id">doctrine.orm.entity_manager</parameter>
+    <parameter key="gesdinet.jwtrefreshtoken.user_checker.id">security.user_checker</parameter>
     <parameter key="console.command.ids" type="collection"/>
   </parameters>
   <services>
@@ -231,6 +249,7 @@
     <service id="App\Controller\AuthController" class="App\Controller\AuthController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Service\PaymentService"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.5nX7ca3.App\Controller\AuthController"/>
       </call>
@@ -241,11 +260,29 @@
     <service id="App\DataFixtures\UserFixture" class="App\DataFixtures\UserFixture" autowire="true" autoconfigure="true">
       <tag name="doctrine.fixture.orm"/>
     </service>
+    <service id="App\Repository\CourseRepository" class="App\Repository\CourseRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\TransactionRepository" class="App\Repository\TransactionRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Security\UserProvider" class="App\Security\UserProvider" autowire="true" autoconfigure="true"/>
+    <service id="App\Service\PaymentService" class="App\Service\PaymentService" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Repository\CourseRepository"/>
+      <argument type="service" id="App\Repository\TransactionRepository"/>
+      <argument type="service" id="App\Repository\UserRepository"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.5nX7ca3.App\Service\PaymentService"/>
+      </call>
+    </service>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="response_listener" class="Symfony\Component\HttpKernel\EventListener\ResponseListener">
       <tag name="kernel.event_subscriber"/>
@@ -1117,6 +1154,14 @@
       <argument type="service" id="logger" on-invalid="null"/>
       <argument type="service" id="request_stack" on-invalid="null"/>
       <call method="addListener">
+        <argument>lexik_jwt_authentication.on_authentication_success</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="gesdinet.jwtrefreshtoken.send_token"/>
+          <argument>attachRefreshToken</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
           <argument type="service_closure" id="response_listener"/>
@@ -1929,7 +1974,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator._inl0RG"/>
+      <argument type="service" id=".service_locator.pGUPoV5"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -2075,6 +2120,7 @@
       <call method="setEntityNamespaces">
         <argument type="collection">
           <argument key="App">App\Entity</argument>
+          <argument key="GesdinetJWTRefreshTokenBundle">Gesdinet\JWTRefreshTokenBundle\Entity</argument>
         </argument>
       </call>
       <call method="setMetadataCacheImpl">
@@ -2121,6 +2167,7 @@
       <argument type="service" id="annotations.cached_reader"/>
       <argument type="collection">
         <argument>/app/src/Entity</argument>
+        <argument>/app/vendor/gesdinet/jwt-refresh-token-bundle/Entity</argument>
       </argument>
     </service>
     <service id="cache.doctrine.orm.default.metadata" class="Symfony\Component\Cache\Adapter\ArrayAdapter">
@@ -2229,6 +2276,10 @@
         <argument key="default" type="collection">
           <argument type="collection">
             <argument>App\Entity</argument>
+            <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
+          </argument>
+          <argument type="collection">
+            <argument>Gesdinet\JWTRefreshTokenBundle\Entity</argument>
             <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
           </argument>
         </argument>
@@ -2587,13 +2638,14 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="security.firewall.map" class="Symfony\Bundle\SecurityBundle\Security\FirewallMap">
-      <argument type="service" id=".service_locator.27yPg_d"/>
+      <argument type="service" id=".service_locator.2LaHaFj"/>
       <argument type="iterator">
         <argument key="security.firewall.map.context.dev" type="service" id=".security.request_matcher.Iy.T22O"/>
         <argument key="security.firewall.map.context.app.swagger_ui" type="service" id=".security.request_matcher.mYljB3Z"/>
         <argument key="security.firewall.map.context.login" type="service" id=".security.request_matcher.DZoY9_l"/>
         <argument key="security.firewall.map.context.register" type="service" id=".security.request_matcher.PEUIOmG"/>
         <argument key="security.firewall.map.context.api" type="service" id=".security.request_matcher.p4VlLPC"/>
+        <argument key="security.firewall.map.context.refresh" type="service" id=".security.request_matcher.aubhXG2"/>
       </argument>
     </service>
     <service id="security.firewall.context" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext" abstract="true">
@@ -2704,6 +2756,13 @@
       </call>
       <call method="add">
         <argument type="service" id=".security.request_matcher.DWXoHrb"/>
+        <argument type="collection">
+          <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.Zm.uzKD"/>
         <argument type="collection">
           <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
         </argument>
@@ -2942,6 +3001,7 @@
         <argument type="service" id="security.authentication.provider.anonymous.login"/>
         <argument type="service" id="security.authentication.provider.anonymous.register"/>
         <argument type="service" id="security.authentication.provider.guard.api"/>
+        <argument type="service" id="security.authentication.provider.anonymous.refresh"/>
       </argument>
       <argument>true</argument>
       <call method="setEventDispatcher">
@@ -2973,6 +3033,7 @@
         <argument>app.swagger_ui</argument>
         <argument>login</argument>
         <argument>register</argument>
+        <argument>refresh</argument>
       </argument>
       <call method="setSessionAuthenticationStrategy">
         <argument type="service" id="security.authentication.session_strategy"/>
@@ -3341,13 +3402,73 @@
       <argument>null</argument>
       <argument type="service" id="security.firewall.map.config.api"/>
     </service>
-    <service id=".service_locator.27yPg_d" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id="security.firewall.map.config.refresh" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig">
+      <argument>refresh</argument>
+      <argument>security.user_checker</argument>
+      <argument>.security.request_matcher.aubhXG2</argument>
+      <argument>true</argument>
+      <argument>true</argument>
+      <argument>security.user.provider.concrete.entity_provider</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument type="collection">
+        <argument>anonymous</argument>
+      </argument>
+      <argument>null</argument>
+    </service>
+    <service id=".security.request_matcher.aubhXG2" class="Symfony\Component\HttpFoundation\RequestMatcher">
+      <argument>^/api/v1/token/refresh</argument>
+    </service>
+    <service id="security.event_dispatcher.refresh" class="Symfony\Component\EventDispatcher\EventDispatcher">
+      <call method="addListener">
+        <argument>Symfony\Component\Security\Http\Event\LogoutEvent</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="security.logout.listener.csrf_token_clearing"/>
+          <argument>onLogout</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+    </service>
+    <service id="security.authentication.listener.anonymous.refresh" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener">
+      <argument type="service" id="security.untracked_token_storage"/>
+      <argument>%container.build_hash%</argument>
+      <argument type="service" id="logger" on-invalid="null"/>
+      <argument type="service" id="security.authentication.manager"/>
+    </service>
+    <service id="security.authentication.provider.anonymous.refresh" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider">
+      <argument>%container.build_hash%</argument>
+    </service>
+    <service id="security.exception_listener.refresh" class="Symfony\Component\Security\Http\Firewall\ExceptionListener">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.trust_resolver"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument>refresh</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument>null</argument>
+      <argument type="service" id="logger" on-invalid="null"/>
+      <argument>true</argument>
+    </service>
+    <service id="security.firewall.map.context.refresh" class="Symfony\Bundle\SecurityBundle\Security\FirewallContext">
+      <argument type="iterator">
+        <argument type="service" id="security.channel_listener"/>
+        <argument type="service" id="security.authentication.listener.anonymous.refresh"/>
+        <argument type="service" id="security.access_listener"/>
+      </argument>
+      <argument type="service" id="security.exception_listener.refresh"/>
+      <argument>null</argument>
+      <argument type="service" id="security.firewall.map.config.refresh"/>
+    </service>
+    <service id=".service_locator.2LaHaFj" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="security.firewall.map.context.api" type="service_closure" id="security.firewall.map.context.api"/>
         <argument key="security.firewall.map.context.app.swagger_ui" type="service_closure" id="security.firewall.map.context.app.swagger_ui"/>
         <argument key="security.firewall.map.context.dev" type="service_closure" id="security.firewall.map.context.dev"/>
         <argument key="security.firewall.map.context.login" type="service_closure" id="security.firewall.map.context.login"/>
+        <argument key="security.firewall.map.context.refresh" type="service_closure" id="security.firewall.map.context.refresh"/>
         <argument key="security.firewall.map.context.register" type="service_closure" id="security.firewall.map.context.register"/>
       </argument>
     </service>
@@ -3356,6 +3477,9 @@
     </service>
     <service id=".security.request_matcher.DWXoHrb" class="Symfony\Component\HttpFoundation\RequestMatcher">
       <argument>^/api/v1/register</argument>
+    </service>
+    <service id=".security.request_matcher.Zm.uzKD" class="Symfony\Component\HttpFoundation\RequestMatcher">
+      <argument>^/api/v1/token/refresh</argument>
     </service>
     <service id=".security.request_matcher.cRNYaJ1" class="Symfony\Component\HttpFoundation\RequestMatcher">
       <argument>^/api</argument>
@@ -4508,6 +4632,54 @@
       </call>
     </service>
     <service id="twig.missing_extension_suggestor" class="Twig\Extra\TwigExtraBundle\MissingExtensionSuggestor"/>
+    <service id="gesdinet.jwtrefreshtoken.send_token" class="Gesdinet\JWTRefreshTokenBundle\EventListener\AttachRefreshTokenOnSuccessListener">
+      <tag name="kernel.event_listener" event="lexik_jwt_authentication.on_authentication_success" method="attachRefreshToken"/>
+      <argument type="service" id="gesdinet.jwtrefreshtoken.refresh_token_manager"/>
+      <argument>2592000</argument>
+      <argument type="service" id="validator"/>
+      <argument type="service" id="request_stack"/>
+      <argument>username</argument>
+      <argument>refresh_token</argument>
+      <argument>false</argument>
+    </service>
+    <service id="gesdinet.jwtrefreshtoken.refresh_token_manager" class="Gesdinet\JWTRefreshTokenBundle\Doctrine\RefreshTokenManager" public="true">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument>Gesdinet\JWTRefreshTokenBundle\Entity\RefreshToken</argument>
+    </service>
+    <service id="gesdinet.jwtrefreshtoken" class="Gesdinet\JWTRefreshTokenBundle\Service\RefreshToken" public="true">
+      <argument type="service" id="gesdinet.jwtrefreshtoken.authenticator"/>
+      <argument type="service" id="gesdinet.jwtrefreshtoken.user_provider"/>
+      <argument type="service" id="lexik_jwt_authentication.handler.authentication_success"/>
+      <argument type="service" id="lexik_jwt_authentication.handler.authentication_failure"/>
+      <argument type="service" id="gesdinet.jwtrefreshtoken.refresh_token_manager"/>
+      <argument>2592000</argument>
+      <argument>api</argument>
+      <argument>false</argument>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="gesdinet.jwtrefreshtoken.user_provider" class="Gesdinet\JWTRefreshTokenBundle\Security\Provider\RefreshTokenProvider">
+      <argument type="service" id="gesdinet.jwtrefreshtoken.refresh_token_manager"/>
+    </service>
+    <service id="gesdinet.jwtrefreshtoken.authenticator" class="Gesdinet\JWTRefreshTokenBundle\Security\Authenticator\RefreshTokenAuthenticator">
+      <argument type="service" id="security.user_checker"/>
+      <argument>refresh_token</argument>
+    </service>
+    <service id="Gesdinet\JWTRefreshTokenBundle\Command\ClearInvalidRefreshTokensCommand" class="Gesdinet\JWTRefreshTokenBundle\Command\ClearInvalidRefreshTokensCommand">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="gesdinet.jwtrefreshtoken.refresh_token_manager"/>
+      <call method="setName">
+        <argument>gesdinet:jwt:clear</argument>
+      </call>
+    </service>
+    <service id="Gesdinet\JWTRefreshTokenBundle\Command\RevokeRefreshTokenCommand" class="Gesdinet\JWTRefreshTokenBundle\Command\RevokeRefreshTokenCommand">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="gesdinet.jwtrefreshtoken.refresh_token_manager"/>
+      <call method="setName">
+        <argument>gesdinet:jwt:revoke</argument>
+      </call>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AuthController" class="App\Controller\AuthController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AuthController" class="App\Controller\AuthController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AuthController" class="App\Controller\AuthController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4515,8 +4687,15 @@
     <service id=".abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\UserFixture" class="App\DataFixtures\UserFixture" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataFixtures\UserFixture" class="App\DataFixtures\UserFixture" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CourseRepository" class="App\Repository\CourseRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CourseRepository" class="App\Repository\CourseRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\TransactionRepository" class="App\Repository\TransactionRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\TransactionRepository" class="App\Repository\TransactionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Service\PaymentService" class="App\Service\PaymentService" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Service\PaymentService" class="App\Service\PaymentService" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Service\PaymentService" class="App\Service\PaymentService" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.Kbr2i2X" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4831,25 +5010,34 @@
         <argument key="loader" type="service_closure" id=".errored..service_locator.KfbR3DY.Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
-    <service id=".service_locator.1Qr75He" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.PC.PRRt" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="JWTManager" type="service_closure" id="lexik_jwt_authentication.jwt_manager"/>
         <argument key="encoder" type="service_closure" id="security.user_password_encoder.generic"/>
+        <argument key="refreshTokenManager" type="service_closure" id="gesdinet.jwtrefreshtoken.refresh_token_manager"/>
         <argument key="validator" type="service_closure" id="validator"/>
       </argument>
     </service>
-    <service id=".service_locator.NLpc7d7" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.ppvuJ6L" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\AuthController::register" type="service_closure" id=".service_locator.1Qr75He"/>
+        <argument key="refreshService" type="service_closure" id="gesdinet.jwtrefreshtoken"/>
+      </argument>
+    </service>
+    <service id=".service_locator.vuGfvoM" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Controller\AuthController::refresh" type="service_closure" id=".service_locator.ppvuJ6L"/>
+        <argument key="App\Controller\AuthController::register" type="service_closure" id=".service_locator.PC.PRRt"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="App\Kernel::terminate" type="service_closure" id=".service_locator.KfwZsne"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::terminate" type="service_closure" id=".service_locator.KfwZsne"/>
-        <argument key="App\Controller\AuthController:register" type="service_closure" id=".service_locator.1Qr75He"/>
+        <argument key="App\Controller\AuthController:refresh" type="service_closure" id=".service_locator.ppvuJ6L"/>
+        <argument key="App\Controller\AuthController:register" type="service_closure" id=".service_locator.PC.PRRt"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel:terminate" type="service_closure" id=".service_locator.KfwZsne"/>
@@ -4921,9 +5109,11 @@
         <argument key="doctrine.orm.listeners.pdo_cache_adapter_doctrine_schema_subscriber" type="service_closure" id="doctrine.orm.listeners.pdo_cache_adapter_doctrine_schema_subscriber"/>
       </argument>
     </service>
-    <service id=".service_locator._inl0RG" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.pGUPoV5" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\CourseRepository" type="service_closure" id="App\Repository\CourseRepository"/>
+        <argument key="App\Repository\TransactionRepository" type="service_closure" id="App\Repository\TransactionRepository"/>
         <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
@@ -4972,6 +5162,12 @@
     <service id=".service_locator.5nX7ca3.App\Controller\AuthController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\AuthController"/>
       <argument>App\Controller\AuthController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.5nX7ca3" method="withContext"/>
+    </service>
+    <service id=".service_locator.5nX7ca3.App\Service\PaymentService" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Service\PaymentService"/>
+      <argument>App\Service\PaymentService</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.5nX7ca3" method="withContext"/>
     </service>
@@ -5086,24 +5282,60 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.NLpc7d7"/>
+      <argument type="service" id=".service_locator.vuGfvoM"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.NLpc7d7"/>
+      <argument type="service" id=".service_locator.vuGfvoM"/>
     </service>
     <service id=".doctrine.orm.default_metadata_driver.inner" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain">
       <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
         <argument>App\Entity</argument>
       </call>
+      <call method="addDriver">
+        <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
+        <argument>Gesdinet\JWTRefreshTokenBundle\Entity</argument>
+      </call>
+      <call method="addDriver">
+        <argument type="service">
+          <service class="Doctrine\ORM\Mapping\Driver\XmlDriver">
+            <argument type="service">
+              <service class="Doctrine\Persistence\Mapping\Driver\SymfonyFileLocator">
+                <argument type="collection">
+                  <argument key="/app/vendor/gesdinet/jwt-refresh-token-bundle/Resources/config/orm/doctrine-orm">Gesdinet\JWTRefreshTokenBundle\Entity</argument>
+                  <argument key="/app/vendor/gesdinet/jwt-refresh-token-bundle/Resources/config/orm/doctrine-entity">Gesdinet\JWTRefreshTokenBundle\Entity</argument>
+                </argument>
+                <argument>.orm.xml</argument>
+              </service>
+            </argument>
+          </service>
+        </argument>
+        <argument>Gesdinet\JWTRefreshTokenBundle\Entity</argument>
+      </call>
+      <call method="addDriver">
+        <argument type="service">
+          <service class="Doctrine\ORM\Mapping\Driver\XmlDriver">
+            <argument type="service">
+              <service class="Doctrine\Persistence\Mapping\Driver\SymfonyFileLocator">
+                <argument type="collection">
+                  <argument key="/app/vendor/gesdinet/jwt-refresh-token-bundle/Resources/config/orm/doctrine-orm">Gesdinet\JWTRefreshTokenBundle\Entity</argument>
+                  <argument key="/app/vendor/gesdinet/jwt-refresh-token-bundle/Resources/config/orm/doctrine-entity">Gesdinet\JWTRefreshTokenBundle\Entity</argument>
+                </argument>
+                <argument>.orm.xml</argument>
+              </service>
+            </argument>
+          </service>
+        </argument>
+        <argument>Gesdinet\JWTRefreshTokenBundle\Entity</argument>
+      </call>
     </service>
     <service id=".errored..service_locator.KfwZsne.Symfony\Component\HttpFoundation\Response" class="Symfony\Component\HttpFoundation\Response"/>
     <service id=".errored..service_locator.KfbR3DY.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
-      <argument type="service" id=".service_locator.XORYIwB"/>
+      <argument type="service" id=".service_locator.4D8YdSh"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -5169,6 +5401,8 @@
         <argument key="lexik:jwt:generate-keypair">lexik_jwt_authentication.generate_keypair_command</argument>
         <argument key="debug:twig">twig.command.debug</argument>
         <argument key="lint:twig">twig.command.lint</argument>
+        <argument key="gesdinet:jwt:clear">Gesdinet\JWTRefreshTokenBundle\Command\ClearInvalidRefreshTokensCommand</argument>
+        <argument key="gesdinet:jwt:revoke">Gesdinet\JWTRefreshTokenBundle\Command\RevokeRefreshTokenCommand</argument>
         <argument key="make:auth">maker.auto_command.make_auth</argument>
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:controller">maker.auto_command.make_controller</argument>
@@ -5194,10 +5428,12 @@
         <argument key="make:migration">maker.auto_command.make_migration</argument>
       </argument>
     </service>
-    <service id=".service_locator.XORYIwB" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.4D8YdSh" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand" type="service_closure" id="Doctrine\DBAL\Tools\Console\Command\RunSqlCommand"/>
+        <argument key="Gesdinet\JWTRefreshTokenBundle\Command\ClearInvalidRefreshTokensCommand" type="service_closure" id="Gesdinet\JWTRefreshTokenBundle\Command\ClearInvalidRefreshTokensCommand"/>
+        <argument key="Gesdinet\JWTRefreshTokenBundle\Command\RevokeRefreshTokenCommand" type="service_closure" id="Gesdinet\JWTRefreshTokenBundle\Command\RevokeRefreshTokenCommand"/>
         <argument key="console.command.about" type="service_closure" id="console.command.about"/>
         <argument key="console.command.assets_install" type="service_closure" id="console.command.assets_install"/>
         <argument key="console.command.cache_clear" type="service_closure" id="console.command.cache_clear"/>
@@ -5315,6 +5551,8 @@
     <service id="Symfony\Component\DependencyInjection\ContainerInterface" alias="service_container">
       <deprecated package="symfony/dependency-injection" version="5.1">The "%alias_id%" autowiring alias is deprecated. Define it explicitly in your app if you want to keep using it.</deprecated>
     </service>
+    <service id="Gesdinet\JWTRefreshTokenBundle\Service\RefreshToken" alias="gesdinet.jwtrefreshtoken"/>
+    <service id="Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManagerInterface" alias="gesdinet.jwtrefreshtoken.refresh_token_manager"/>
     <service id="App\Kernel" alias="kernel" public="true"/>
     <service id="Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface" alias="parameter_bag"/>
     <service id="Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface" alias="parameter_bag"/>
@@ -5426,6 +5664,8 @@
     <service id="security.user_checker.register" alias="security.user_checker"/>
     <service id="security.authentication.session_strategy.api" alias="security.authentication.session_strategy"/>
     <service id="security.user_checker.api" alias="security.user_checker"/>
+    <service id="security.authentication.session_strategy.refresh" alias="security.authentication.session_strategy_noop"/>
+    <service id="security.user_checker.refresh" alias="security.user_checker"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenInterface" alias="lexik_jwt_authentication.jwt_manager"/>
     <service id="Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface" alias="lexik_jwt_authentication.jwt_manager"/>
@@ -5454,9 +5694,11 @@
     <service id="Twig\Environment" alias="twig"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.Kbr2i2X" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.NLpc7d7"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.vuGfvoM"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.Hllcktv"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
+    <service id="gesdinet.jwtrefreshtoken.object_manager" alias="doctrine.orm.default_entity_manager"/>
+    <service id="gesdinet.jwtrefreshtoken.user_checker" alias="security.user_checker"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id=".service_locator.NuHbnez" alias="jms_serializer.metadata.service_locator"/>
     <service id=".service_locator.kHZ3pm_" alias="nelmio_api_doc.generator_locator"/>
