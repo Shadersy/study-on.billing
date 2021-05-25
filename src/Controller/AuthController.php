@@ -126,7 +126,7 @@ class AuthController extends AbstractController
         $bearerToken = $request->headers->get('Authorization');
 
 
-       $response = $this->paymentService->pay($code, $bearerToken);
+        $response = $this->paymentService->pay($code, $bearerToken);
 
 
         return new JsonResponse($response);
@@ -162,7 +162,11 @@ class AuthController extends AbstractController
 
          $bearerToken = $request->headers->get('Authorization');
 
-         $response =  $this->paymentService->getTransactions($bearerToken);
+
+         $filters = $request->query->all();
+
+
+         $response =  $this->paymentService->getTransactions($bearerToken, $filters);
 
          return new JsonResponse($response);
 
