@@ -21,17 +21,21 @@ return [
     [ // $regexpList
         0 => '{^(?'
                 .'|/_error/(\\d+)(?:\\.([^/]++))?(*:35)'
-                .'|/api/v1/courses/([^/]++)(?'
-                    .'|/pay(*:73)'
-                    .'|(*:80)'
+                .'|/api/v1/(?'
+                    .'|courses/([^/]++)(?'
+                        .'|/pay(*:76)'
+                        .'|(*:83)'
+                    .')'
+                    .'|deposite/([^/]++)(*:108)'
                 .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
         35 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        73 => [[['_route' => 'pay', '_controller' => 'App\\Controller\\AuthController::doPayment'], ['code'], ['POST' => 0], null, false, false, null]],
-        80 => [
-            [['_route' => 'course', '_controller' => 'App\\Controller\\AuthController::showCourse'], ['code'], ['GET' => 0], null, false, true, null],
+        76 => [[['_route' => 'pay', '_controller' => 'App\\Controller\\AuthController::doPayment'], ['code'], ['POST' => 0], null, false, false, null]],
+        83 => [[['_route' => 'course', '_controller' => 'App\\Controller\\AuthController::showCourse'], ['code'], ['GET' => 0], null, false, true, null]],
+        108 => [
+            [['_route' => 'deposite', '_controller' => 'App\\Controller\\AuthController::doDeposite'], ['sum'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

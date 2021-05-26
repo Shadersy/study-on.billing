@@ -132,6 +132,16 @@ class AuthController extends AbstractController
         return new JsonResponse($response);
     }
 
+    public function doDeposite(Request $request)
+    {
+        $bearerToken = $request->headers->get('Authorization');
+        $sum = explode("/", $request->getPathInfo())[4];
+
+        $response = $this->paymentService->deposite($sum, $bearerToken);
+
+        return new JsonResponse($response);
+    }
+
 
      public function showCourse(Request $request)
      {

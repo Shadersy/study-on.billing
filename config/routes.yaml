@@ -20,6 +20,11 @@ pay:
     controller: App\Controller\AuthController::doPayment
     methods: [POST]
     
+deposite:
+    path: /api/v1/deposite/{sum}
+    controller: App\Controller\AuthController::doDeposite
+    methods: [POST]    
+    
 course:
     path: /api/v1/courses/{code}
     controller: App\Controller\AuthController::showCourse

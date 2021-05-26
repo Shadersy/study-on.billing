@@ -30,6 +30,47 @@ class PaymentService extends AbstractController
         $this->userRepo = $userRepo;
     }
 
+    public function deposite(float $sum, string $bearerToken)
+    {
+        $user = $this->getUserByToken($bearerToken);
+
+
+        $em = $this->getDoctrine()->getManager();
+
+
+        $em->getConnection()->beginTransaction();
+
+        try {
+
+            if ($sum > 10000 ) {
+
+
+                throw new Exception('Невозможно внести больше 10000 кредитов за одну транзакцию');
+            }
+
+            $user->setBalance($user->getBalance()  + $sum);
+
+            $transaction = new Transaction();
+
+            $transaction->setUsername($user);
+            $transaction->setOperationType(1);
+            $transaction->setCreatedAt(new \DateTime());
+
+
+
+            $em->persist($user);
+            $em->persist($transaction);
+            $em->flush();
+            $em->getConnection()->commit();
+            return ['success' => 'true', 'balance' => $user->getBalance(), 'sum' => $sum];
+
+        } catch (Exception $e) {
+            $em->getConnection()->rollBack();
+            return ['code' => '406', 'message' => 'Невозможно произвести операцию'];
+
+        }
+    }
+
     public function pay(string $code, string $bearerToken)
     {
         $em = $this->getDoctrine()->getManager();
@@ -157,14 +198,25 @@ class PaymentService extends AbstractController
         $data = $this->transRepo->filterTransaction( $user, $filters, null);
 
 
+
+
         foreach ($data as $key) {
-            $result[] = [
-                'id' => $key->getId(),
-                'type' => $key->getOperationType()==0?'payment':'deposite',
-                'course_code' => $key->getCourse()->getSymbolCode(),
-                'created_at' => $key->getCreatedAt(),
-                'amount' => $key->getUsername()->getBalance()
-            ];
+            if ($key->getCourse() != null) {
+                $result[] = [
+                    'id' => $key->getId(),
+                    'type' => $key->getOperationType() == 0 ? 'payment' : 'deposite',
+                    'course_code' => $key->getCourse()->getSymbolCode(),
+                    'created_at' => $key->getCreatedAt(),
+                    'amount' => $key->getUsername()->getBalance()
+                ];
+            }
+            else
+                $result[] = [
+                    'id' => $key->getId(),
+                    'type' => $key->getOperationType() == 0 ? 'payment' : 'deposite',
+                    'created_at' => $key->getCreatedAt(),
+                    'amount' => $key->getUsername()->getBalance()
+                ];
         }
         return $result;
     }
