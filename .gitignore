@@ -1,6 +1,6 @@
 
 ###> symfony/framework-bundle ###
-/.env.local
+.env.local
 /.env.local.php
 /.env.*.local
 /node_modules
@@ -10,7 +10,7 @@
 /vendor/
 /node_modules/
 /{token:
-/config/jwt
+config/jwt
 /.idea
 /var
 ###< symfony/framework-bundle ###
