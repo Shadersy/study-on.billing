@@ -9,7 +9,7 @@
 /vendor/
 /node_modules/
 /{token:
-/config/jwt
+/config/jwt/
 /.idea
 /var
 ###< symfony/framework-bundle ###
