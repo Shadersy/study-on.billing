@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Course;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,32 +21,25 @@ class CourseRepository extends ServiceEntityRepository
         parent::__construct($registry, Course::class);
     }
 
-    // /**
-    //  * @return Course[] Returns an array of Course objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Course
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+
+    public function getCoursesByUser(
+        string $username,
+        EntityManager $em
+    ) {
+
+
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT DISTINCT  symbol_code, course_type, cost, email, end_of_rent
+            FROM course LEFT JOIN transaction t on course.id = t.course_id
+            LEFT JOIN billing_user bu on t.username_id = bu.id WHERE email = :username');
+
+        $statement->bindValue('username', $username);
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+
+        return $results;
     }
-    */
 }
+

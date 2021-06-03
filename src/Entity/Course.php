@@ -20,7 +20,7 @@ class Course
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $symbol_code;
+    private $symbolCode;
 
     /**
      * @ORM\Column(type="smallint")
@@ -32,6 +32,11 @@ class Course
      */
     private $cost;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $title;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -39,12 +44,12 @@ class Course
 
     public function getSymbolCode(): ?string
     {
-        return $this->symbol_code;
+        return $this->symbolCode;
     }
 
-    public function setSymbolCode(string $symbol_code): self
+    public function setSymbolCode(string $symbolCode): self
     {
-        $this->symbol_code = $symbol_code;
+        $this->symbolCode = $symbolCode;
 
         return $this;
     }
@@ -69,6 +74,18 @@ class Course
     public function setCost(?float $cost): self
     {
         $this->cost = $cost;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }

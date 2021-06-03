@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -25,6 +26,9 @@ use Nelmio\ApiDocBundle\Annotation\Security;
 use Swagger\Annotations as SWG;
 use Symfony\Component\Routing\Annotation\Route;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration;
+use Nelmio\ApiDocBundle\Annotation;
+
 
 
 class AuthController extends AbstractController
@@ -37,10 +41,40 @@ class AuthController extends AbstractController
         $this->paymentService = $paymentService;
     }
 
-    public function register(Request $request, UserPasswordEncoderInterface $encoder,
-                             ValidatorInterface $validator, JWTTokenManagerInterface $JWTManager,
-                             RefreshTokenManagerInterface $refreshTokenManager)
-    {
+    /**
+     * @SWG\Post(
+     *
+     *
+     *     @SWG\Response(
+     *         response=200,
+     *         description="Returns token and creating user in billing database",
+     *         @SWG\Schema(
+     *             type="array",
+     *             @Model(type=App\Entity\User::class)
+     *         )
+     *     ),
+     *
+     *   @SWG\Parameter(
+     *     name="body",
+     *     in="body",
+     *     description="User email used to create account.",
+     *     required=true,
+     *     @SWG\Schema(
+     *     @SWG\Property(property="email", type="string", example="abc@abc.com"),
+     *     @SWG\Property(property="password", type="string", example="12345678")
+     * ),
+     *   ),
+     *
+     *
+     * )
+     */
+    public function register(
+        Request $request,
+        UserPasswordEncoderInterface $encoder,
+        ValidatorInterface $validator,
+        JWTTokenManagerInterface $JWTManager,
+        RefreshTokenManagerInterface $refreshTokenManager
+    ) {
 
 
         $em = $this->getDoctrine()->getManager();
@@ -59,11 +93,11 @@ class AuthController extends AbstractController
         $errors = $validator->validate($userDto);
 
 
-            if(count($errors) > 0){
+        if (count($errors) > 0) {
                 $errorsString = (string) $errors;
 
                 return new JsonResponse(['error' => $errorsString]);
-            }
+        }
 
 
             $user = User::fromDto($userDto);
@@ -79,35 +113,37 @@ class AuthController extends AbstractController
             $em->flush();
 
 
-        return new JsonResponse(['token' => $JWTManager->create($user), 'refreshToken' => $refreshToken->getRefreshToken()]);
+        return new JsonResponse(['token' => $JWTManager->create($user),
+            'refreshToken' => $refreshToken->getRefreshToken()]);
     }
 
-    public function api() : ?JsonResponse
+    /**
+     * @SWG\Get(
+     *
+     *
+     *     @SWG\Response(
+     *         response=200,
+     *         description="Returns balance of user",
+     *
+     *     ),
+     *
+     *   @SWG\Parameter(
+     *     name="Authorization",
+     *     in="header",
+     *     description="User's token.",
+     *     required=true,
+     *     type="string",
+     *    @SWG\Property(property="apiToken", type="string", example="Bearer {token}"),
+     *   ),
+     *
+     *
+     * )
+     */
+    public function api(): ?JsonResponse
     {
 
         $arr = array('balance' => $this->getUser()->getBalance());
-
-        return new JsonResponse($this->getUser()->getBalance());
-
-    }
-
-    public function courseList()
-    {
-       $arr = $this->getDoctrine()->getRepository(Course::class)->findAll();
-
-       $result = [];
-
-        foreach ($arr as $key) {
-            $result[] = [
-                'symbol_code' => $key->getSymbolCode(),
-                'course_type' => $key->getCourseType(),
-                'cost' => $key->getCost()
-            ];
-        }
-
-
-       return new JsonResponse($result);
-
+        return new JsonResponse(['balance' => $this->getUser()->getBalance()]);
     }
 
 
@@ -118,69 +154,7 @@ class AuthController extends AbstractController
     }
 
 
-    public function doPayment(Request $request)
-    {
 
-        $code = explode("/", $request->getPathInfo())[4];
-
-        $bearerToken = $request->headers->get('Authorization');
-
-
-        $response = $this->paymentService->pay($code, $bearerToken);
-
-
-        return new JsonResponse($response);
-    }
-
-    public function doDeposite(Request $request)
-    {
-        $bearerToken = $request->headers->get('Authorization');
-        $sum = explode("/", $request->getPathInfo())[4];
-
-        $response = $this->paymentService->deposite($sum, $bearerToken);
-
-        return new JsonResponse($response);
-    }
-
-
-     public function showCourse(Request $request)
-     {
-
-         $code = explode("/", $request->getPathInfo())[4];
-
-         $course = $this->
-         getDoctrine()->
-         getRepository(Course::class)->
-         findBy(['symbol_code' => $code]);
-
-         $result = [];
-
-         foreach ($course as $key) {
-             $result = [
-                 'symbol_code' => $key->getSymbolCode(),
-                 'course_type' => $key->getCourseType(),
-                 'cost' => $key->getCost()
-             ];
-         }
-
-
-         return new JsonResponse($result);
-     }
-
-     public function showTransactions(Request $request)
-     {
-
-         $bearerToken = $request->headers->get('Authorization');
-
-
-         $filters = $request->query->all();
-
-
-         $response =  $this->paymentService->getTransactions($bearerToken, $filters);
-
-         return new JsonResponse($response);
-
-     }
 
 
 }

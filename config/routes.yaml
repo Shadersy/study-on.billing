@@ -4,12 +4,13 @@ register:
     methods: [POST]
 
 api:
-    path: /api
+    path: /api/v1/current
     controller: App\Controller\AuthController::api
 
 login_check:
     path: /api/v1/auth
     methods:  [POST]
+    
 refresh:
     path: /api/v1/token/refresh
     controller: App\Controller\AuthController::refresh
@@ -17,32 +18,42 @@ refresh:
     
 pay:
     path: /api/v1/courses/{code}/pay
-    controller: App\Controller\AuthController::doPayment
+    controller: App\Controller\TransactionController::doPayment
     methods: [POST]
     
 deposite:
     path: /api/v1/deposite/{sum}
-    controller: App\Controller\AuthController::doDeposite
+    controller: App\Controller\TransactionController::doDeposite
     methods: [POST]    
     
 course:
     path: /api/v1/courses/{code}
-    controller: App\Controller\AuthController::showCourse
+    controller: App\Controller\TransactionController::showCourse
     methods: [GET]
+    
+editcourse:
+    path: /api/v1/courses/{code}
+    controller: App\Controller\AdminUtilsController::editCourse
+    methods: [POST]    
         
 courses:
     path: /api/v1/courses
-    controller: App\Controller\AuthController::courseList
+    controller: App\Controller\TransactionController::courseList
     methods: [GET]
+    
+newcourse:
+    path: /api/v1/courses
+    controller: App\Controller\AdminUtilsController::createCourseByAdmin
+    methods: [POST]    
     
 transactions:
     path: /api/v1/transactions
-    controller: App\Controller\AuthController::showTransactions
+    controller: App\Controller\TransactionController::showTransactions
     methods: [GET]    
 
         
 app.swagger_ui:
-    path: /api/doc
+    path: /api/v1/doc
     methods: [GET]
     defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
 main:

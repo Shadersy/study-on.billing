@@ -17,8 +17,6 @@ class Transaction
      */
     private $id;
 
-
-
     /**
      * @ORM\ManyToOne(targetEntity=Course::class)
      */
@@ -35,9 +33,10 @@ class Transaction
     private $value;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(name="end_of_rent", type="datetime")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $validity;
+    public $endOfRent;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
@@ -46,9 +45,10 @@ class Transaction
     private $username;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $created_at;
+    private $createdAt;
 
     public function getId(): ?int
     {
@@ -92,14 +92,14 @@ class Transaction
         return $this;
     }
 
-    public function getValidity(): ?\DateTimeInterface
+    public function getEndOfRent(): ?\DateTimeInterface
     {
-        return $this->validity;
+        return $this->endOfRent;
     }
 
-    public function setValidity(\DateTimeInterface $validity): self
+    public function setEndOfRent(\DateTimeInterface $endOfRent): self
     {
-        $this->validity = $validity;
+        $this->endOfRent = $endOfRent;
 
         return $this;
     }
@@ -118,12 +118,12 @@ class Transaction
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }

@@ -13,7 +13,7 @@ class UserFixture extends Fixture
         $users = array();
         $admins = array();
 
-        $admins[] = 'ROLE_ADMIN';
+        $admins[] = 'ROLE_SUPER_ADMIN';
         $users[] = 'ROLE_USER';
 
         $admin = new User();
@@ -21,12 +21,12 @@ class UserFixture extends Fixture
 
         $admin->setEmail('admin@mail.ru');
         $admin->setPassword(password_hash('qwerty', PASSWORD_DEFAULT));
-        $admin->setRoles($users);
+        $admin->setRoles($admins);
         $admin->setBalance(rand(0, 1000) / 10);
 
-        $user->setEmail('testuser@mail.ru');
+        $user->setEmail('shadersy98@mail.ru');
         $user->setPassword(password_hash('qwerty', PASSWORD_DEFAULT));
-        $user->setRoles($admins);
+        $user->setRoles($users);
         $user->setBalance(rand(0, 1000) / 10);
 
         $manager->persist($user);

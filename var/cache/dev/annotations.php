@@ -60,25 +60,45 @@ return [[
 '%5B%5BC%5DSymfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%23addLink%5D%5B1%5D' => 1,
 '%5BSymfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%24container%5D%5B1%5D' => 0,
 '%5B%5BC%5DSymfony%5CBundle%5CFrameworkBundle%5CController%5CAbstractController%24container%5D%5B1%5D' => 1,
+'%5BApp%5CController%5CAdminUtilsController%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CController%5CAdminUtilsController%5D%5B1%5D' => 1,
+'%5BApp%5CController%5CAdminUtilsController%23__construct%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CController%5CAdminUtilsController%23__construct%5D%5B1%5D' => 1,
+'%5BApp%5CController%5CAdminUtilsController%23createCourseByAdmin%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CController%5CAdminUtilsController%23createCourseByAdmin%5D%5B1%5D' => 1,
+'%5BApp%5CController%5CAdminUtilsController%23editCourse%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CController%5CAdminUtilsController%23editCourse%5D%5B1%5D' => 1,
+'%5BApp%5CController%5CAdminUtilsController%24paymentService%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CController%5CAdminUtilsController%24paymentService%5D%5B1%5D' => 1,
 '%5BApp%5CController%5CAuthController%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CController%5CAuthController%5D%5B1%5D' => 1,
 '%5BApp%5CController%5CAuthController%23__construct%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CController%5CAuthController%23__construct%5D%5B1%5D' => 1,
-'%5BApp%5CController%5CAuthController%23register%5D%5B1%5D' => 0,
+'%5BApp%5CController%5CAuthController%23register%5D%5B1%5D' => 2,
 '%5B%5BC%5DApp%5CController%5CAuthController%23register%5D%5B1%5D' => 1,
-'%5BApp%5CController%5CAuthController%23api%5D%5B1%5D' => 0,
+'%5BApp%5CController%5CAuthController%23api%5D%5B1%5D' => 3,
 '%5B%5BC%5DApp%5CController%5CAuthController%23api%5D%5B1%5D' => 1,
-'%5BApp%5CController%5CAuthController%23courseList%5D%5B1%5D' => 0,
-'%5B%5BC%5DApp%5CController%5CAuthController%23courseList%5D%5B1%5D' => 1,
 '%5BApp%5CController%5CAuthController%23refresh%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CController%5CAuthController%23refresh%5D%5B1%5D' => 1,
-'%5BApp%5CController%5CAuthController%23doPayment%5D%5B1%5D' => 0,
-'%5B%5BC%5DApp%5CController%5CAuthController%23doPayment%5D%5B1%5D' => 1,
-'%5BApp%5CController%5CAuthController%23showCourse%5D%5B1%5D' => 0,
-'%5B%5BC%5DApp%5CController%5CAuthController%23showCourse%5D%5B1%5D' => 1,
 '%5BApp%5CController%5CAuthController%24paymentService%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CController%5CAuthController%24paymentService%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CCourse%5D%5B1%5D' => 2,
+'%5BApp%5CController%5CTransactionController%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CController%5CTransactionController%5D%5B1%5D' => 1,
+'%5BApp%5CController%5CTransactionController%23__construct%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CController%5CTransactionController%23__construct%5D%5B1%5D' => 1,
+'%5BApp%5CController%5CTransactionController%23doPayment%5D%5B1%5D' => 4,
+'%5B%5BC%5DApp%5CController%5CTransactionController%23doPayment%5D%5B1%5D' => 1,
+'%5BApp%5CController%5CTransactionController%23doDeposite%5D%5B1%5D' => 5,
+'%5B%5BC%5DApp%5CController%5CTransactionController%23doDeposite%5D%5B1%5D' => 1,
+'%5BApp%5CController%5CTransactionController%23showCourse%5D%5B1%5D' => 6,
+'%5B%5BC%5DApp%5CController%5CTransactionController%23showCourse%5D%5B1%5D' => 1,
+'%5BApp%5CController%5CTransactionController%23showTransactions%5D%5B1%5D' => 7,
+'%5B%5BC%5DApp%5CController%5CTransactionController%23showTransactions%5D%5B1%5D' => 1,
+'%5BApp%5CController%5CTransactionController%23courseList%5D%5B1%5D' => 8,
+'%5B%5BC%5DApp%5CController%5CTransactionController%23courseList%5D%5B1%5D' => 1,
+'%5BApp%5CController%5CTransactionController%24paymentService%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CController%5CTransactionController%24paymentService%5D%5B1%5D' => 1,
+'%5BApp%5CEntity%5CCourse%5D%5B1%5D' => 9,
 '%5B%5BC%5DApp%5CEntity%5CCourse%5D%5B1%5D' => 1,
 '%5BApp%5CEntity%5CCourse%23getId%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CEntity%5CCourse%23getId%5D%5B1%5D' => 1,
@@ -94,15 +114,21 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CCourse%23getCost%5D%5B1%5D' => 1,
 '%5BApp%5CEntity%5CCourse%23setCost%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CEntity%5CCourse%23setCost%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CCourse%24id%5D%5B1%5D' => 3,
+'%5BApp%5CEntity%5CCourse%23getTitle%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CEntity%5CCourse%23getTitle%5D%5B1%5D' => 1,
+'%5BApp%5CEntity%5CCourse%23setTitle%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CEntity%5CCourse%23setTitle%5D%5B1%5D' => 1,
+'%5BApp%5CEntity%5CCourse%24id%5D%5B1%5D' => 10,
 '%5B%5BC%5DApp%5CEntity%5CCourse%24id%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CCourse%24symbol_code%5D%5B1%5D' => 4,
-'%5B%5BC%5DApp%5CEntity%5CCourse%24symbol_code%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CCourse%24courseType%5D%5B1%5D' => 5,
+'%5BApp%5CEntity%5CCourse%24symbolCode%5D%5B1%5D' => 11,
+'%5B%5BC%5DApp%5CEntity%5CCourse%24symbolCode%5D%5B1%5D' => 1,
+'%5BApp%5CEntity%5CCourse%24courseType%5D%5B1%5D' => 12,
 '%5B%5BC%5DApp%5CEntity%5CCourse%24courseType%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CCourse%24cost%5D%5B1%5D' => 6,
+'%5BApp%5CEntity%5CCourse%24cost%5D%5B1%5D' => 13,
 '%5B%5BC%5DApp%5CEntity%5CCourse%24cost%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CTransaction%5D%5B1%5D' => 7,
+'%5BApp%5CEntity%5CCourse%24title%5D%5B1%5D' => 11,
+'%5B%5BC%5DApp%5CEntity%5CCourse%24title%5D%5B1%5D' => 1,
+'%5BApp%5CEntity%5CTransaction%5D%5B1%5D' => 14,
 '%5B%5BC%5DApp%5CEntity%5CTransaction%5D%5B1%5D' => 1,
 '%5BApp%5CEntity%5CTransaction%23getId%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CEntity%5CTransaction%23getId%5D%5B1%5D' => 1,
@@ -118,27 +144,33 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CTransaction%23getValue%5D%5B1%5D' => 1,
 '%5BApp%5CEntity%5CTransaction%23setValue%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CEntity%5CTransaction%23setValue%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CTransaction%23get%EF%BF%BDvalidity%5D%5B1%5D' => 0,
-'%5B%5BC%5DApp%5CEntity%5CTransaction%23get%EF%BF%BDvalidity%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CTransaction%23set%EF%BF%BDvalidity%5D%5B1%5D' => 0,
-'%5B%5BC%5DApp%5CEntity%5CTransaction%23set%EF%BF%BDvalidity%5D%5B1%5D' => 1,
+'%5BApp%5CEntity%5CTransaction%23getEndOfRent%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CEntity%5CTransaction%23getEndOfRent%5D%5B1%5D' => 1,
+'%5BApp%5CEntity%5CTransaction%23setEndOfRent%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CEntity%5CTransaction%23setEndOfRent%5D%5B1%5D' => 1,
 '%5BApp%5CEntity%5CTransaction%23getUsername%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CEntity%5CTransaction%23getUsername%5D%5B1%5D' => 1,
 '%5BApp%5CEntity%5CTransaction%23setUsername%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CEntity%5CTransaction%23setUsername%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CTransaction%24id%5D%5B1%5D' => 3,
+'%5BApp%5CEntity%5CTransaction%23getCreatedAt%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CEntity%5CTransaction%23getCreatedAt%5D%5B1%5D' => 1,
+'%5BApp%5CEntity%5CTransaction%23setCreatedAt%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CEntity%5CTransaction%23setCreatedAt%5D%5B1%5D' => 1,
+'%5BApp%5CEntity%5CTransaction%24id%5D%5B1%5D' => 10,
 '%5B%5BC%5DApp%5CEntity%5CTransaction%24id%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CTransaction%24course%5D%5B1%5D' => 8,
+'%5BApp%5CEntity%5CTransaction%24course%5D%5B1%5D' => 15,
 '%5B%5BC%5DApp%5CEntity%5CTransaction%24course%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CTransaction%24operationType%5D%5B1%5D' => 5,
+'%5BApp%5CEntity%5CTransaction%24operationType%5D%5B1%5D' => 12,
 '%5B%5BC%5DApp%5CEntity%5CTransaction%24operationType%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CTransaction%24value%5D%5B1%5D' => 6,
+'%5BApp%5CEntity%5CTransaction%24value%5D%5B1%5D' => 13,
 '%5B%5BC%5DApp%5CEntity%5CTransaction%24value%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CTransaction%24%EF%BF%BDvalidity%5D%5B1%5D' => 9,
-'%5B%5BC%5DApp%5CEntity%5CTransaction%24%EF%BF%BDvalidity%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CTransaction%24username%5D%5B1%5D' => 10,
+'%5BApp%5CEntity%5CTransaction%24endOfRent%5D%5B1%5D' => 16,
+'%5B%5BC%5DApp%5CEntity%5CTransaction%24endOfRent%5D%5B1%5D' => 1,
+'%5BApp%5CEntity%5CTransaction%24username%5D%5B1%5D' => 17,
 '%5B%5BC%5DApp%5CEntity%5CTransaction%24username%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CUser%5D%5B1%5D' => 11,
+'%5BApp%5CEntity%5CTransaction%24createdAt%5D%5B1%5D' => 18,
+'%5B%5BC%5DApp%5CEntity%5CTransaction%24createdAt%5D%5B1%5D' => 1,
+'%5BApp%5CEntity%5CUser%5D%5B1%5D' => 19,
 '%5B%5BC%5DApp%5CEntity%5CUser%5D%5B1%5D' => 1,
 '%5BApp%5CEntity%5CUser%23getId%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CEntity%5CUser%23getId%5D%5B1%5D' => 1,
@@ -166,15 +198,15 @@ return [[
 '%5B%5BC%5DApp%5CEntity%5CUser%23getBalance%5D%5B1%5D' => 1,
 '%5BApp%5CEntity%5CUser%23setBalance%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CEntity%5CUser%23setBalance%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CUser%24id%5D%5B1%5D' => 3,
+'%5BApp%5CEntity%5CUser%24id%5D%5B1%5D' => 10,
 '%5B%5BC%5DApp%5CEntity%5CUser%24id%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CUser%24email%5D%5B1%5D' => 12,
+'%5BApp%5CEntity%5CUser%24email%5D%5B1%5D' => 20,
 '%5B%5BC%5DApp%5CEntity%5CUser%24email%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CUser%24roles%5D%5B1%5D' => 13,
+'%5BApp%5CEntity%5CUser%24roles%5D%5B1%5D' => 21,
 '%5B%5BC%5DApp%5CEntity%5CUser%24roles%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CUser%24password%5D%5B1%5D' => 14,
+'%5BApp%5CEntity%5CUser%24password%5D%5B1%5D' => 22,
 '%5B%5BC%5DApp%5CEntity%5CUser%24password%5D%5B1%5D' => 1,
-'%5BApp%5CEntity%5CUser%24balance%5D%5B1%5D' => 6,
+'%5BApp%5CEntity%5CUser%24balance%5D%5B1%5D' => 13,
 '%5B%5BC%5DApp%5CEntity%5CUser%24balance%5D%5B1%5D' => 1,
 '%5BDoctrine%5CBundle%5CDoctrineBundle%5CController%5CProfilerController%5D%5B1%5D' => 0,
 '%5B%5BC%5DDoctrine%5CBundle%5CDoctrineBundle%5CController%5CProfilerController%5D%5B1%5D' => 1,
@@ -626,13 +658,13 @@ return [[
 '%5B%5BC%5DGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CAbstractRefreshToken%23isValid%5D%5B1%5D' => 1,
 '%5BGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CAbstractRefreshToken%23__toString%5D%5B1%5D' => 0,
 '%5B%5BC%5DGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CAbstractRefreshToken%23__toString%5D%5B1%5D' => 1,
-'%5BGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CAbstractRefreshToken%24refreshToken%5D%5B1%5D' => 15,
+'%5BGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CAbstractRefreshToken%24refreshToken%5D%5B1%5D' => 23,
 '%5B%5BC%5DGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CAbstractRefreshToken%24refreshToken%5D%5B1%5D' => 1,
-'%5BGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CAbstractRefreshToken%24username%5D%5B1%5D' => 15,
+'%5BGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CAbstractRefreshToken%24username%5D%5B1%5D' => 23,
 '%5B%5BC%5DGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CAbstractRefreshToken%24username%5D%5B1%5D' => 1,
-'%5BGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CAbstractRefreshToken%24valid%5D%5B1%5D' => 15,
+'%5BGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CAbstractRefreshToken%24valid%5D%5B1%5D' => 23,
 '%5B%5BC%5DGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CAbstractRefreshToken%24valid%5D%5B1%5D' => 1,
-'%5BGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CRefreshToken%5D%5B1%5D' => 16,
+'%5BGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CRefreshToken%5D%5B1%5D' => 24,
 '%5B%5BC%5DGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CRefreshToken%5D%5B1%5D' => 1,
 '%5BGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CRefreshToken%23getId%5D%5B1%5D' => 0,
 '%5B%5BC%5DGesdinet%5CJWTRefreshTokenBundle%5CEntity%5CRefreshToken%23getId%5D%5B1%5D' => 1,
@@ -728,6 +760,76 @@ return [[
 '%5B%5BC%5DSymfony%5CBundle%5CFrameworkBundle%5CController%5CTemplateController%23__invoke%5D%5B1%5D' => 1,
 '%5BSymfony%5CBundle%5CFrameworkBundle%5CController%5CTemplateController%24twig%5D%5B1%5D' => 0,
 '%5B%5BC%5DSymfony%5CBundle%5CFrameworkBundle%5CController%5CTemplateController%24twig%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CExceptionPanelController%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CExceptionPanelController%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CExceptionPanelController%23__construct%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CExceptionPanelController%23__construct%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CExceptionPanelController%23body%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CExceptionPanelController%23body%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CExceptionPanelController%23stylesheet%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CExceptionPanelController%23stylesheet%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CExceptionPanelController%24errorRenderer%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CExceptionPanelController%24errorRenderer%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CExceptionPanelController%24profiler%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CExceptionPanelController%24profiler%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23__construct%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23__construct%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23homeAction%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23homeAction%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23panelAction%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23panelAction%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23toolbarAction%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23toolbarAction%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23searchBarAction%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23searchBarAction%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23searchResultsAction%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23searchResultsAction%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23searchAction%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23searchAction%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23phpinfoAction%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23phpinfoAction%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23openAction%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23openAction%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23getTemplateManager%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23getTemplateManager%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23denyAccessIfProfilerDisabled%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23denyAccessIfProfilerDisabled%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23renderWithCspNonces%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%23renderWithCspNonces%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24templateManager%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24templateManager%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24generator%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24generator%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24profiler%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24profiler%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24twig%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24twig%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24templates%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24templates%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24cspHandler%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24cspHandler%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24baseDir%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CProfilerController%24baseDir%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%23__construct%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%23__construct%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%23panelAction%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%23panelAction%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%23getTraces%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%23getTraces%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%24profiler%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%24profiler%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%24twig%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%24twig%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%24matcher%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%24matcher%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%24routes%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%24routes%5D%5B1%5D' => 1,
+'%5BSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%24expressionLanguageProviders%5D%5B1%5D' => 0,
+'%5B%5BC%5DSymfony%5CBundle%5CWebProfilerBundle%5CController%5CRouterController%24expressionLanguageProviders%5D%5B1%5D' => 1,
 '%5BSymfony%5CComponent%5CSecurity%5CHttp%5CController%5CUserValueResolver%5D%5B1%5D' => 0,
 '%5B%5BC%5DSymfony%5CComponent%5CSecurity%5CHttp%5CController%5CUserValueResolver%5D%5B1%5D' => 1,
 '%5BSymfony%5CComponent%5CSecurity%5CHttp%5CController%5CUserValueResolver%23__construct%5D%5B1%5D' => 0,
@@ -742,8 +844,903 @@ return [[
 ], [
 
 0 => [],
-1 => 1621885559,
+1 => 1622706074,
 2 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Swagger\\Annotations\\Post'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Post')),
+            clone ($p['Swagger\\Annotations\\Parameter'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Parameter')),
+            clone ($p['Swagger\\Annotations\\Schema'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Schema')),
+            clone ($p['Swagger\\Annotations\\Property'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Property')),
+            clone ($p['Swagger\\Context'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Context')),
+            clone $p['Swagger\\Annotations\\Property'],
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Context'],
+            clone ($p['Swagger\\Annotations\\Response'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Response')),
+            clone $p['Swagger\\Annotations\\Schema'],
+            clone $p['Swagger\\Context'],
+            clone ($p['Nelmio\\ApiDocBundle\\Annotation\\Model'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Nelmio\\ApiDocBundle\\Annotation\\Model')),
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Context'],
+        ],
+        null,
+        [
+            'stdClass' => [
+                'parameters' => [
+                    [
+                        $o[1],
+                    ],
+                ],
+                'responses' => [
+                    [
+                        $o[9],
+                    ],
+                ],
+                '_context' => [
+                    $o[15],
+                    $o[8],
+                    $o[7],
+                    $o[4],
+                    5 => $o[6],
+                    9 => $o[14],
+                    $o[11],
+                    12 => $o[13],
+                ],
+                'name' => [
+                    1 => 'body',
+                ],
+                'in' => [
+                    1 => 'body',
+                ],
+                'description' => [
+                    1 => 'User email used to create account.',
+                    9 => 'Returns token and creating user in billing database',
+                ],
+                'required' => [
+                    1 => true,
+                ],
+                'schema' => [
+                    1 => $o[2],
+                    9 => $o[10],
+                ],
+                'properties' => [
+                    2 => [
+                        $o[3],
+                        $o[5],
+                    ],
+                ],
+                'property' => [
+                    3 => 'email',
+                    5 => 'password',
+                ],
+                'type' => [
+                    3 => 'string',
+                    5 => 'string',
+                    10 => 'array',
+                    12 => 'App\\Entity\\User',
+                ],
+                'example' => [
+                    3 => 'abc@abc.com',
+                    5 => '12345678',
+                ],
+                'filename' => [
+                    4 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    6 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    11 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    13 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                ],
+                'line' => [
+                    4 => 977,
+                    6 => 977,
+                    977,
+                    977,
+                    11 => 977,
+                    13 => 977,
+                    977,
+                    977,
+                ],
+                'method' => [
+                    4 => 'Annotation',
+                    6 => 'Annotation',
+                    'Annotation',
+                    'Annotation',
+                    11 => 'Annotation',
+                    13 => 'Annotation',
+                    'Annotation',
+                    'Annotation',
+                ],
+                'class' => [
+                    4 => 'DocParser',
+                    6 => 'DocParser',
+                    'DocParser',
+                    'DocParser',
+                    11 => 'DocParser',
+                    13 => 'DocParser',
+                    'DocParser',
+                    'DocParser',
+                ],
+                'namespace' => [
+                    4 => 'Doctrine\\Common\\Annotations',
+                    6 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                    11 => 'Doctrine\\Common\\Annotations',
+                    13 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                ],
+                'annotations' => [
+                    4 => [
+                        $o[3],
+                    ],
+                    6 => [
+                        $o[5],
+                    ],
+                    [
+                        $o[2],
+                    ],
+                    [
+                        $o[1],
+                    ],
+                    11 => [
+                        $o[10],
+                    ],
+                    13 => [
+                        $o[12],
+                    ],
+                    [
+                        $o[9],
+                    ],
+                    [
+                        $o[0],
+                    ],
+                ],
+                'response' => [
+                    9 => 200,
+                ],
+                '_unmerged' => [
+                    10 => [
+                        $o[12],
+                    ],
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+3 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Swagger\\Annotations\\Get'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Get')),
+            clone ($p['Swagger\\Annotations\\Parameter'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Parameter')),
+            clone ($p['Swagger\\Annotations\\Property'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Property')),
+            clone ($p['Swagger\\Context'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Context')),
+            clone $p['Swagger\\Context'],
+            clone ($p['Swagger\\Annotations\\Response'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Response')),
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Context'],
+        ],
+        null,
+        [
+            'stdClass' => [
+                'parameters' => [
+                    [
+                        $o[1],
+                    ],
+                ],
+                'responses' => [
+                    [
+                        $o[5],
+                    ],
+                ],
+                '_context' => [
+                    $o[7],
+                    $o[4],
+                    $o[3],
+                    5 => $o[6],
+                ],
+                'name' => [
+                    1 => 'Authorization',
+                ],
+                'in' => [
+                    1 => 'header',
+                ],
+                'description' => [
+                    1 => 'User\'s token.',
+                    5 => 'Returns balance of user',
+                ],
+                'required' => [
+                    1 => true,
+                ],
+                'schema' => [
+                    1 => $o[2],
+                ],
+                'type' => [
+                    1 => 'string',
+                    'string',
+                ],
+                'property' => [
+                    2 => 'apiToken',
+                ],
+                'example' => [
+                    2 => 'Bearer {token}',
+                ],
+                'filename' => [
+                    3 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    6 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                ],
+                'line' => [
+                    3 => 977,
+                    977,
+                    6 => 977,
+                    977,
+                ],
+                'method' => [
+                    3 => 'Annotation',
+                    'Annotation',
+                    6 => 'Annotation',
+                    'Annotation',
+                ],
+                'class' => [
+                    3 => 'DocParser',
+                    'DocParser',
+                    6 => 'DocParser',
+                    'DocParser',
+                ],
+                'namespace' => [
+                    3 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                    6 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                ],
+                'annotations' => [
+                    3 => [
+                        $o[2],
+                    ],
+                    [
+                        $o[1],
+                    ],
+                    6 => [
+                        $o[5],
+                    ],
+                    [
+                        $o[0],
+                    ],
+                ],
+                'response' => [
+                    5 => 200,
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+4 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Swagger\\Annotations\\Post'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Post')),
+            clone ($p['Swagger\\Annotations\\Parameter'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Parameter')),
+            clone ($p['Swagger\\Annotations\\Property'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Property')),
+            clone ($p['Swagger\\Context'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Context')),
+            clone $p['Swagger\\Context'],
+            clone ($p['Swagger\\Annotations\\Response'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Response')),
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Context'],
+        ],
+        null,
+        [
+            'stdClass' => [
+                'parameters' => [
+                    [
+                        $o[1],
+                    ],
+                ],
+                'responses' => [
+                    [
+                        $o[5],
+                    ],
+                ],
+                '_context' => [
+                    $o[7],
+                    $o[4],
+                    $o[3],
+                    5 => $o[6],
+                ],
+                'name' => [
+                    1 => 'Authorization',
+                ],
+                'in' => [
+                    1 => 'header',
+                ],
+                'description' => [
+                    1 => 'User\'s token.',
+                    5 => 'Buing the course',
+                ],
+                'required' => [
+                    1 => true,
+                ],
+                'schema' => [
+                    1 => $o[2],
+                ],
+                'type' => [
+                    1 => 'string',
+                    'string',
+                ],
+                'property' => [
+                    2 => 'apiToken',
+                ],
+                'example' => [
+                    2 => 'Bearer {token}',
+                ],
+                'filename' => [
+                    3 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    6 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                ],
+                'line' => [
+                    3 => 977,
+                    977,
+                    6 => 977,
+                    977,
+                ],
+                'method' => [
+                    3 => 'Annotation',
+                    'Annotation',
+                    6 => 'Annotation',
+                    'Annotation',
+                ],
+                'class' => [
+                    3 => 'DocParser',
+                    'DocParser',
+                    6 => 'DocParser',
+                    'DocParser',
+                ],
+                'namespace' => [
+                    3 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                    6 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                ],
+                'annotations' => [
+                    3 => [
+                        $o[2],
+                    ],
+                    [
+                        $o[1],
+                    ],
+                    6 => [
+                        $o[5],
+                    ],
+                    [
+                        $o[0],
+                    ],
+                ],
+                'response' => [
+                    5 => 200,
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+5 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Swagger\\Annotations\\Post'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Post')),
+            clone ($p['Swagger\\Annotations\\Parameter'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Parameter')),
+            clone ($p['Swagger\\Annotations\\Property'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Property')),
+            clone ($p['Swagger\\Context'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Context')),
+            clone $p['Swagger\\Context'],
+            clone ($p['Swagger\\Annotations\\Response'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Response')),
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Context'],
+        ],
+        null,
+        [
+            'stdClass' => [
+                'parameters' => [
+                    [
+                        $o[1],
+                    ],
+                ],
+                'responses' => [
+                    [
+                        $o[5],
+                    ],
+                ],
+                '_context' => [
+                    $o[7],
+                    $o[4],
+                    $o[3],
+                    5 => $o[6],
+                ],
+                'name' => [
+                    1 => 'Authorization',
+                ],
+                'in' => [
+                    1 => 'header',
+                ],
+                'description' => [
+                    1 => 'User\'s token.',
+                    5 => 'Do deposite via sum',
+                ],
+                'required' => [
+                    1 => true,
+                ],
+                'schema' => [
+                    1 => $o[2],
+                ],
+                'type' => [
+                    1 => 'string',
+                    'string',
+                ],
+                'property' => [
+                    2 => 'apiToken',
+                ],
+                'example' => [
+                    2 => 'Bearer {token}',
+                ],
+                'filename' => [
+                    3 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    6 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                ],
+                'line' => [
+                    3 => 977,
+                    977,
+                    6 => 977,
+                    977,
+                ],
+                'method' => [
+                    3 => 'Annotation',
+                    'Annotation',
+                    6 => 'Annotation',
+                    'Annotation',
+                ],
+                'class' => [
+                    3 => 'DocParser',
+                    'DocParser',
+                    6 => 'DocParser',
+                    'DocParser',
+                ],
+                'namespace' => [
+                    3 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                    6 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                ],
+                'annotations' => [
+                    3 => [
+                        $o[2],
+                    ],
+                    [
+                        $o[1],
+                    ],
+                    6 => [
+                        $o[5],
+                    ],
+                    [
+                        $o[0],
+                    ],
+                ],
+                'response' => [
+                    5 => 200,
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+6 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Swagger\\Annotations\\Get'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Get')),
+            clone ($p['Swagger\\Annotations\\Parameter'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Parameter')),
+            clone ($p['Swagger\\Annotations\\Property'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Property')),
+            clone ($p['Swagger\\Context'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Context')),
+            clone $p['Swagger\\Context'],
+            clone ($p['Swagger\\Annotations\\Response'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Response')),
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Context'],
+        ],
+        null,
+        [
+            'stdClass' => [
+                'parameters' => [
+                    [
+                        $o[1],
+                    ],
+                ],
+                'responses' => [
+                    [
+                        $o[5],
+                    ],
+                ],
+                '_context' => [
+                    $o[7],
+                    $o[4],
+                    $o[3],
+                    5 => $o[6],
+                ],
+                'name' => [
+                    1 => 'Authorization',
+                ],
+                'in' => [
+                    1 => 'header',
+                ],
+                'description' => [
+                    1 => 'User\'s token.',
+                    5 => 'Show the course from all courses ',
+                ],
+                'required' => [
+                    1 => true,
+                ],
+                'schema' => [
+                    1 => $o[2],
+                ],
+                'type' => [
+                    1 => 'string',
+                    'string',
+                ],
+                'property' => [
+                    2 => 'apiToken',
+                ],
+                'example' => [
+                    2 => 'Bearer {token}',
+                ],
+                'filename' => [
+                    3 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    6 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                ],
+                'line' => [
+                    3 => 977,
+                    977,
+                    6 => 977,
+                    977,
+                ],
+                'method' => [
+                    3 => 'Annotation',
+                    'Annotation',
+                    6 => 'Annotation',
+                    'Annotation',
+                ],
+                'class' => [
+                    3 => 'DocParser',
+                    'DocParser',
+                    6 => 'DocParser',
+                    'DocParser',
+                ],
+                'namespace' => [
+                    3 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                    6 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                ],
+                'annotations' => [
+                    3 => [
+                        $o[2],
+                    ],
+                    [
+                        $o[1],
+                    ],
+                    6 => [
+                        $o[5],
+                    ],
+                    [
+                        $o[0],
+                    ],
+                ],
+                'response' => [
+                    5 => 200,
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+7 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Swagger\\Annotations\\Get'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Get')),
+            clone ($p['Swagger\\Annotations\\Parameter'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Parameter')),
+            clone ($p['Swagger\\Annotations\\Property'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Property')),
+            clone ($p['Swagger\\Context'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Context')),
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Annotations\\Parameter'],
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Annotations\\Parameter'],
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Annotations\\Parameter'],
+            clone $p['Swagger\\Context'],
+            clone ($p['Swagger\\Annotations\\Response'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Response')),
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Context'],
+        ],
+        null,
+        [
+            'stdClass' => [
+                'parameters' => [
+                    [
+                        $o[1],
+                        $o[5],
+                        $o[7],
+                        $o[9],
+                    ],
+                ],
+                'responses' => [
+                    [
+                        $o[11],
+                    ],
+                ],
+                '_context' => [
+                    $o[13],
+                    $o[4],
+                    $o[3],
+                    5 => $o[6],
+                    7 => $o[8],
+                    9 => $o[10],
+                    11 => $o[12],
+                ],
+                'name' => [
+                    1 => 'Authorization',
+                    5 => 'filter[course]',
+                    7 => 'filter[type]',
+                    9 => 'filter[skipexpired]',
+                ],
+                'in' => [
+                    1 => 'header',
+                    5 => 'query',
+                    7 => 'query',
+                    9 => 'query',
+                ],
+                'description' => [
+                    1 => 'User\'s token.',
+                    5 => 'filter the courses by symbol code what user has',
+                    7 => 'filter the courses by deposite/payment operation type what user has',
+                    9 => 'skip the expired rent-courses if flag equal true',
+                    11 => 'Show the course from all courses ',
+                ],
+                'required' => [
+                    1 => true,
+                    5 => false,
+                    7 => false,
+                    9 => false,
+                ],
+                'schema' => [
+                    1 => $o[2],
+                ],
+                'type' => [
+                    1 => 'string',
+                    'string',
+                    5 => 'string',
+                    7 => 'string',
+                    9 => 'string',
+                ],
+                'property' => [
+                    2 => 'apiToken',
+                ],
+                'example' => [
+                    2 => 'Bearer {token}',
+                ],
+                'filename' => [
+                    3 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    6 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    8 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    10 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    12 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                ],
+                'line' => [
+                    3 => 977,
+                    977,
+                    6 => 977,
+                    8 => 977,
+                    10 => 977,
+                    12 => 977,
+                    977,
+                ],
+                'method' => [
+                    3 => 'Annotation',
+                    'Annotation',
+                    6 => 'Annotation',
+                    8 => 'Annotation',
+                    10 => 'Annotation',
+                    12 => 'Annotation',
+                    'Annotation',
+                ],
+                'class' => [
+                    3 => 'DocParser',
+                    'DocParser',
+                    6 => 'DocParser',
+                    8 => 'DocParser',
+                    10 => 'DocParser',
+                    12 => 'DocParser',
+                    'DocParser',
+                ],
+                'namespace' => [
+                    3 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                    6 => 'Doctrine\\Common\\Annotations',
+                    8 => 'Doctrine\\Common\\Annotations',
+                    10 => 'Doctrine\\Common\\Annotations',
+                    12 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                ],
+                'annotations' => [
+                    3 => [
+                        $o[2],
+                    ],
+                    [
+                        $o[1],
+                    ],
+                    6 => [
+                        $o[5],
+                    ],
+                    8 => [
+                        $o[7],
+                    ],
+                    10 => [
+                        $o[9],
+                    ],
+                    12 => [
+                        $o[11],
+                    ],
+                    [
+                        $o[0],
+                    ],
+                ],
+                'response' => [
+                    11 => 200,
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+8 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Swagger\\Annotations\\Get'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Get')),
+            clone ($p['Swagger\\Annotations\\Parameter'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Parameter')),
+            clone ($p['Swagger\\Annotations\\Property'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Property')),
+            clone ($p['Swagger\\Context'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Context')),
+            clone $p['Swagger\\Context'],
+            clone ($p['Swagger\\Annotations\\Response'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Response')),
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Context'],
+        ],
+        null,
+        [
+            'stdClass' => [
+                'parameters' => [
+                    [
+                        $o[1],
+                    ],
+                ],
+                'responses' => [
+                    [
+                        $o[5],
+                    ],
+                ],
+                '_context' => [
+                    $o[7],
+                    $o[4],
+                    $o[3],
+                    5 => $o[6],
+                ],
+                'name' => [
+                    1 => 'Authorization',
+                ],
+                'in' => [
+                    1 => 'header',
+                ],
+                'description' => [
+                    1 => 'User\'s token.',
+                    5 => 'Returns list of courses',
+                ],
+                'required' => [
+                    1 => true,
+                ],
+                'schema' => [
+                    1 => $o[2],
+                ],
+                'type' => [
+                    1 => 'string',
+                    'string',
+                ],
+                'property' => [
+                    2 => 'apiToken',
+                ],
+                'example' => [
+                    2 => 'Bearer {token}',
+                ],
+                'filename' => [
+                    3 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    6 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                ],
+                'line' => [
+                    3 => 977,
+                    977,
+                    6 => 977,
+                    977,
+                ],
+                'method' => [
+                    3 => 'Annotation',
+                    'Annotation',
+                    6 => 'Annotation',
+                    'Annotation',
+                ],
+                'class' => [
+                    3 => 'DocParser',
+                    'DocParser',
+                    6 => 'DocParser',
+                    'DocParser',
+                ],
+                'namespace' => [
+                    3 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                    6 => 'Doctrine\\Common\\Annotations',
+                    'Doctrine\\Common\\Annotations',
+                ],
+                'annotations' => [
+                    3 => [
+                        $o[2],
+                    ],
+                    [
+                        $o[1],
+                    ],
+                    6 => [
+                        $o[5],
+                    ],
+                    [
+                        $o[0],
+                    ],
+                ],
+                'response' => [
+                    5 => 200,
+                ],
+            ],
+        ],
+        [
+            $o[0],
+        ],
+        []
+    );
+},
+9 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
@@ -762,7 +1759,7 @@ return [[
         []
     );
 },
-3 => static function () {
+10 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Id'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Id')),
@@ -785,7 +1782,7 @@ return [[
         []
     );
 },
-4 => static function () {
+11 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -804,7 +1801,7 @@ return [[
         []
     );
 },
-5 => static function () {
+12 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -823,7 +1820,7 @@ return [[
         []
     );
 },
-6 => static function () {
+13 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -845,7 +1842,7 @@ return [[
         []
     );
 },
-7 => static function () {
+14 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
@@ -864,7 +1861,7 @@ return [[
         []
     );
 },
-8 => static function () {
+15 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
@@ -883,26 +1880,34 @@ return [[
         []
     );
 },
-9 => static function () {
+16 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
-            clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone ($p['Doctrine\\ORM\\Mapping\\JoinColumn'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\JoinColumn')),
         ],
         null,
         [
             'stdClass' => [
+                'name' => [
+                    'end_of_rent',
+                ],
                 'type' => [
                     'datetime',
+                ],
+                'nullable' => [
+                    1 => false,
                 ],
             ],
         ],
         [
             $o[0],
+            $o[1],
         ],
         []
     );
 },
-10 => static function () {
+17 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ManyToOne'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOne')),
@@ -926,7 +1931,31 @@ return [[
         []
     );
 },
-11 => static function () {
+18 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+            clone ($p['Doctrine\\ORM\\Mapping\\JoinColumn'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\JoinColumn')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'name' => [
+                    'created_at',
+                ],
+                'type' => [
+                    'datetime',
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[1],
+        ],
+        []
+    );
+},
+19 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Entity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Entity')),
@@ -960,7 +1989,7 @@ return [[
         []
     );
 },
-12 => static function () {
+20 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -992,7 +2021,7 @@ return [[
         []
     );
 },
-13 => static function () {
+21 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -1011,7 +2040,7 @@ return [[
         []
     );
 },
-14 => static function () {
+22 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
@@ -1046,7 +2075,7 @@ return [[
         []
     );
 },
-15 => static function () {
+23 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Validator\\Constraints\\NotBlank'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\NotBlank')),
@@ -1067,7 +2096,7 @@ return [[
         []
     );
 },
-16 => static function () {
+24 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
             clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntity'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Bridge\\Doctrine\\Validator\\Constraints\\UniqueEntity')),
