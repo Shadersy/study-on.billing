@@ -82,6 +82,8 @@ return [[
 '%5B%5BC%5DApp%5CController%5CAuthController%23refresh%5D%5B1%5D' => 1,
 '%5BApp%5CController%5CAuthController%24paymentService%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CController%5CAuthController%24paymentService%5D%5B1%5D' => 1,
+'%5BApp%5CController%5CMailerController%5D%5B1%5D' => 0,
+'%5B%5BC%5DApp%5CController%5CMailerController%5D%5B1%5D' => 1,
 '%5BApp%5CController%5CTransactionController%5D%5B1%5D' => 0,
 '%5B%5BC%5DApp%5CController%5CTransactionController%5D%5B1%5D' => 1,
 '%5BApp%5CController%5CTransactionController%23__construct%5D%5B1%5D' => 0,
@@ -844,7 +846,7 @@ return [[
 ], [
 
 0 => [],
-1 => 1622706074,
+1 => 1622815096,
 2 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
@@ -1894,9 +1896,6 @@ return [[
                 ],
                 'type' => [
                     'datetime',
-                ],
-                'nullable' => [
-                    1 => false,
                 ],
             ],
         ],

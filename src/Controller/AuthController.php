@@ -102,7 +102,6 @@ class AuthController extends AbstractController
 
             $user = User::fromDto($userDto);
 
-
           $refreshToken = $refreshTokenManager->create();
           $refreshToken->setUsername($user->getEmail());
           $refreshToken->setRefreshToken();
@@ -116,6 +115,7 @@ class AuthController extends AbstractController
         return new JsonResponse(['token' => $JWTManager->create($user),
             'refreshToken' => $refreshToken->getRefreshToken()]);
     }
+
 
     /**
      * @SWG\Get(
@@ -149,13 +149,7 @@ class AuthController extends AbstractController
 
     public function refresh(Request $request, RefreshToken $refreshService)
     {
-
         return $refreshService->refresh($request);
     }
-
-
-
-
-
 }
 

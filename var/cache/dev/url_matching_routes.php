@@ -17,7 +17,7 @@ return [
         '/api/v1/register' => [[['_route' => 'register', '_controller' => 'App\\Controller\\AuthController::register'], null, ['POST' => 0], null, false, false, null]],
         '/api/v1/current' => [[['_route' => 'api', '_controller' => 'App\\Controller\\AuthController::api'], null, null, null, false, false, null]],
         '/api/v1/auth' => [[['_route' => 'login_check'], null, ['POST' => 0], null, false, false, null]],
-        '/api/v1/token/refresh' => [[['_route' => 'refresh', '_controller' => 'App\\Controller\\AuthController::refresh'], null, ['POST' => 0], null, false, false, null]],
+        '/api/v1/token/refresh' => [[['_route' => 'refresh', '_controller' => 'App\\Controller\\AuthController::refresh'], null, ['POST' => 0, 'GET' => 1], null, false, false, null]],
         '/api/v1/courses' => [
             [['_route' => 'courses', '_controller' => 'App\\Controller\\TransactionController::courseList'], null, ['GET' => 0], null, false, false, null],
             [['_route' => 'newcourse', '_controller' => 'App\\Controller\\AdminUtilsController::createCourseByAdmin'], null, ['POST' => 0], null, false, false, null],

@@ -22,8 +22,7 @@ security:
             stateless: true
             anonymous: true
             provider: entity_provider
-                     
-                
+                                     
         login:
             pattern:  ^/api/v1/auth
             stateless: true

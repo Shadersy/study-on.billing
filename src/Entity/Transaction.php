@@ -34,7 +34,7 @@ class Transaction
 
     /**
      * @ORM\Column(name="end_of_rent", type="datetime")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     public $endOfRent;
 

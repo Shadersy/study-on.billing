@@ -21,6 +21,20 @@ class TransactionRepository extends ServiceEntityRepository
         parent::__construct($registry, Transaction::class);
     }
 
+    public function endingNotification()
+    {
+
+        $qb = $this->createQueryBuilder('t')
+            ->where('t.endOfRent - :current_time > \'23:59:59\'')
+            ->setParameter('current_time', new \DateTime());
+
+
+//            date_part('hour', timestamp '2001-02-16 20:38:40')
+
+
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
 
     public function filterTransaction(
         User $user,
