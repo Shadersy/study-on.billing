@@ -351,6 +351,7 @@
     </parameter>
     <parameter key="console.command.ids" type="collection">
       <parameter>console.command.public_alias.App\Command\CourseCommand</parameter>
+      <parameter>console.command.public_alias.App\Command\ReportCommand</parameter>
     </parameter>
   </parameters>
   <services>
@@ -360,6 +361,15 @@
       <tag name="routing.route_loader"/>
     </service>
     <service id="App\Command\CourseCommand" class="App\Command\CourseCommand" autowire="true" autoconfigure="true">
+      <tag name="console.command"/>
+      <tag name="container.no_preload"/>
+      <argument type="service" id="App\Repository\TransactionRepository"/>
+      <argument type="service" id="App\Repository\UserRepository"/>
+      <argument type="service" id="App\Repository\CourseRepository"/>
+      <argument type="service" id="App\Service\Twig"/>
+      <argument type="service" id="swiftmailer.mailer.default"/>
+    </service>
+    <service id="App\Command\ReportCommand" class="App\Command\ReportCommand" autowire="true" autoconfigure="true">
       <tag name="console.command"/>
       <tag name="container.no_preload"/>
       <argument type="service" id="App\Repository\TransactionRepository"/>
@@ -6017,6 +6027,8 @@
     </service>
     <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\CourseCommand" class="App\Command\CourseCommand" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Command\CourseCommand" class="App\Command\CourseCommand" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Console\Command\Command.0.App\Command\ReportCommand" class="App\Command\ReportCommand" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Command\ReportCommand" class="App\Command\ReportCommand" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminUtilsController" class="App\Controller\AdminUtilsController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminUtilsController" class="App\Controller\AdminUtilsController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminUtilsController" class="App\Controller\AdminUtilsController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7219,5 +7231,6 @@
     <service id="argument_resolver.not_tagged_controller" alias="debug.argument_resolver.not_tagged_controller"/>
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id="console.command.public_alias.App\Command\CourseCommand" alias="App\Command\CourseCommand" public="true"/>
+    <service id="console.command.public_alias.App\Command\ReportCommand" alias="App\Command\ReportCommand" public="true"/>
   </services>
 </container>

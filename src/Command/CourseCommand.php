@@ -59,10 +59,19 @@ class CourseCommand extends Command
               "TRANSACTION" => $value->getEndOfrent()];
         }
 
-        foreach($messages as $message){
-            $this->index($message['EMAIL'], $this->mailer, $message);
+
+        foreach($messages as $key => $val)
+        {
+            $messages[$val['EMAIL']][] = $val;
+            unset($messages[$key]);
         }
-        
+
+        foreach($messages as $key => $val)
+        {
+            $this->index($key, $this->mailer, $val);
+        }
+
+
         return 0;
     }
 
@@ -77,7 +86,7 @@ class CourseCommand extends Command
         У вас есть курсы, срок аренды которых подходит к концу: '))
             ->setFrom('send@example.com')
             ->setTo($name)
-            ->setBody($html);
+            ->setBody($html, 'text/html');
 
        $mailer->send($message);
     }
