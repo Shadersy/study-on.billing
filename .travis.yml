@@ -41,3 +41,7 @@ script:
 
 after_script:
   - docker-compose down
+notifications:
+  email:
+    recipients:
+      - shadersy@mail.ru
