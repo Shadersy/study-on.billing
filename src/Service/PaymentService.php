@@ -1,5 +1,4 @@
 <?php
-// $em instanceof EntityManager
 
 namespace App\Service;
 
