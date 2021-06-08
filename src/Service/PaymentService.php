@@ -15,8 +15,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 const RENT_TRANSACTION_TYPE = 2;
 const PURCHASE_TRANSACTION_TYPE = 1;
+const FREE_TRANSACTION_TYPE = 0;
 const MAX_DEPOSITE_VALUE = 10000;
 const MIN_DEPOSITE_VALUE = 1;
+const NULL_COST = 0;
+
 
 class PaymentService extends AbstractController
 {
@@ -99,7 +102,7 @@ class PaymentService extends AbstractController
         findOneBy(['symbolCode' => $code]);
 
 
-        $cost = $course->getCost() == null ? 0 : $course->getCost();
+        $cost = $course->getCost() == null ? NULL_COST : $course->getCost();
 
         $user = $this->userRepo->findOneBy(['email' => $username]);
 
@@ -112,6 +115,18 @@ class PaymentService extends AbstractController
             $em = $this->getDoctrine()->getManager();
             if ($user->getBalance() < $cost) {
                 throw new Exception('Недостаточно средств');
+            }
+
+            $alreadyExists = $this->transRepo->findOneBy(['course' => $course->getId(), 'username' => $user->getId()]);
+
+            if($alreadyExists) {
+                if ($alreadyExists->getCourse()->getCourseType() != RENT_TRANSACTION_TYPE) {
+                    throw new Exception("Курс уже куплен и не может быть куплен повторно.");
+                }
+                else if($alreadyExists->getEndOfRent() > new \DateTime())
+                {
+                    throw new Exception("Аренда ещё не истекла, невозможно оплатить повторно");
+                }
             }
 
             $user->setBalance($user->getBalance() - $cost);
@@ -237,16 +252,16 @@ class PaymentService extends AbstractController
                 throw new Exception('Курс с таким кодом уже существует');
             }
 
-            if ($params['type'] == 0 && $params['price'] != 0) {
+            if ($params['type'] == FREE_TRANSACTION_TYPE && $params['price'] != NULL_COST) {
 
                 throw new Exception('Нельзя установить стоимость бесплатному курса  больше 0');
             }
 
-            if ($params['price'] < 0) {
+            if ($params['price'] < NULL_COST) {
                 throw new Exception('Цена не может быть меньше 0');
             }
 
-            if ($params['type'] != 0 && $params['price'] < 1) {
+            if ($params['type'] != FREE_TRANSACTION_TYPE && $params['price'] < MIN_DEPOSITE_VALUE) {
                 throw new Exception('У платных курсов должна быть указана цена');
             }
 
@@ -301,15 +316,15 @@ class PaymentService extends AbstractController
                     throw new Exception('Курс с таким кодом уже сущесвует');
                 }
             }
-            if ($params['type'] == 0 && $params['price'] != 0) {
+            if ($params['type'] == FREE_TRANSACTION_TYPE && $params['price'] != NULL_COST) {
                 throw new Exception('Нельзя установить стоимость бесплатного курса  больше 0');
             }
 
-            if ($params['price'] < 0) {
+            if ($params['price'] < NULL_COST) {
                 throw new Exception('Цена не может быть меньше 0');
             }
 
-            if ($params['type'] != 0 && $params['price'] < 1) {
+            if ($params['type'] != FREE_TRANSACTION_TYPE && $params['price'] < MIN_DEPOSITE_VALUE) {
                 throw new Exception('У платных курсов должна быть указана цена');
             }
 
