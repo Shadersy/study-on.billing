@@ -22,20 +22,19 @@ class ReportCommand extends Command
         CourseRepository $courseRepo,
         Twig $twig,
         Swift_Mailer $mailer
-    )
-    {
+    ) {
         $this->transRepo = $transactionRepository;
         $this->twig = $twig;
         $this->mailer = $mailer;
         parent::__construct();
     }
 
-        protected function configure()
-        {
+    protected function configure()
+    {
             $this
                 ->setName('payment:report')
                 ->setDescription('Отчет по данным об оплаченных курсах за месяц.');
-        }
+    }
 
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -44,13 +43,13 @@ class ReportCommand extends Command
         $data = $this->transRepo->reportMonth();
         $sum = 0;
 
-        foreach($data as $val){
-            $sum+=$val['sum'];
+        foreach ($data as $val) {
+            $sum += $val['sum'];
         }
 
 
         $currentTime = date('m-d-Y', time());
-        $monthAgo = date('m-d-Y', strtotime($currentTime. '-1 months'));
+        $monthAgo = date('m-d-Y', strtotime($currentTime . '-1 months'));
 
         $this->index($admin, $this->mailer, $data, $sum, $currentTime, $monthAgo);
 

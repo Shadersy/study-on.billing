@@ -26,8 +26,7 @@ class CourseCommand extends Command
         CourseRepository $courseRepo,
         Twig $twig,
         Swift_Mailer $mailer
-    )
-    {
+    ) {
         $this->transRepo = $transactionRepository;
         $this->userRepo = $userRepo;
         $this->courseRepo = $courseRepo;
@@ -42,32 +41,26 @@ class CourseCommand extends Command
         $this
             ->setName('payment:ending:notification')
             ->setDescription('Уведомление об окончании срока аренды.');
-
     }
-
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
-       $transactions = $this->transRepo->endingNotification();
-
-       $messages = [];
+        $transactions = $this->transRepo->endingNotification();
+        $messages = [];
 
         foreach ($transactions as &$value) {
-          $messages[] = [
+            $messages[] = [
               "EMAIL" => $this->userRepo->find($value->getUsername())->getEmail(),
               "COURSE" => $courses[] = $this->courseRepo->findBy(['id' => $value->getCourse()->getId()]),
               "TRANSACTION" => $value->getEndOfrent()];
         }
 
 
-        foreach($messages as $key => $val)
-        {
+        foreach ($messages as $key => $val) {
             $messages[$val['EMAIL']][] = $val;
             unset($messages[$key]);
         }
 
-        foreach($messages as $key => $val)
-        {
+        foreach ($messages as $key => $val) {
             $this->index($key, $this->mailer, $val);
         }
 
@@ -88,6 +81,6 @@ class CourseCommand extends Command
             ->setTo($name)
             ->setBody($html, 'text/html');
 
-       $mailer->send($message);
+        $mailer->send($message);
     }
 }

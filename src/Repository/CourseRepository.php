@@ -27,8 +27,6 @@ class CourseRepository extends ServiceEntityRepository
         string $username,
         EntityManager $em
     ) {
-
-
         $connection = $em->getConnection();
         $statement = $connection->prepare('SELECT DISTINCT  symbol_code, course_type, cost, email, end_of_rent
             FROM course LEFT JOIN transaction t on course.id = t.course_id
@@ -42,4 +40,3 @@ class CourseRepository extends ServiceEntityRepository
         return $results;
     }
 }
-

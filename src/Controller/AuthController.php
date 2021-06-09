@@ -152,4 +152,3 @@ class AuthController extends AbstractController
         return $refreshService->refresh($request);
     }
 }
-

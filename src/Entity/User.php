@@ -52,9 +52,6 @@ class User implements UserInterface
      * @ORM\Column(type="float", nullable=true)
      */
     private $balance;
-
-
-    
     public function getId(): ?int
     {
         return $this->id;
@@ -135,7 +132,7 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public static function fromDto(User $dto) : User
+    public static function fromDto(User $dto): User
     {
         $user = new User();
         $users[] = 'ROLE_USER';
@@ -161,7 +158,4 @@ class User implements UserInterface
 
         return $this;
     }
-
-
-
 }

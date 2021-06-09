@@ -53,8 +53,6 @@ class Transaction
     {
         return $this->id;
     }
-    
-
     public function getCourse(): ?Course
     {
         return $this->course;

@@ -77,7 +77,6 @@ class PaymentService extends AbstractController
             return ['success' => 'true', 'balance' => $user->getBalance(), 'sum' => $sum];
 
         } catch (Exception $e) {
-
             $em->getConnection()->rollBack();
             return ['code' => '406', 'message' => 'Невозможно произвести операцию'];
 
@@ -120,12 +119,10 @@ class PaymentService extends AbstractController
 
             $alreadyExists = $this->transRepo->findOneBy(['course' => $course->getId(), 'username' => $user->getId()]);
 
-            if($alreadyExists) {
+            if ($alreadyExists) {
                 if ($alreadyExists->getCourse()->getCourseType() != RENT_TRANSACTION_TYPE) {
                     throw new Exception("Курс уже куплен и не может быть куплен повторно.");
-                }
-                else if($alreadyExists->getEndOfRent() > new \DateTime())
-                {
+                } elseif ($alreadyExists->getEndOfRent() > new \DateTime()) {
                     throw new Exception("Аренда ещё не истекла, невозможно оплатить повторно");
                 }
             }
@@ -218,9 +215,7 @@ class PaymentService extends AbstractController
                     'created_at' => $key->getCreatedAt(),
                     'amount' => -$key->getCourse()->getCost()
                 ];
-            } else
-                //deposite
-                $result[] = [
+            } else $result[] = [  //deposite
                     'id' => $key->getId(),
                     'type' => $key->getOperationType() == 0 ? 'payment' : 'deposite',
                     'course_code' => ' ',
@@ -254,7 +249,6 @@ class PaymentService extends AbstractController
             }
 
             if ($params['type'] == FREE_TRANSACTION_TYPE && $params['price'] != NULL_COST) {
-
                 throw new Exception('Нельзя установить стоимость бесплатному курса  больше 0');
             }
 
@@ -374,6 +368,4 @@ class PaymentService extends AbstractController
         $em = $this->getDoctrine()->getManager();
         return $this->courseRepo->getCoursesByUser($username, $em);
     }
-
-
 }

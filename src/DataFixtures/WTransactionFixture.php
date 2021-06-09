@@ -60,5 +60,4 @@ class WTransactionFixture extends Fixture
         $manager->persist($depositeTransaction);
         $manager->flush();
     }
-
 }

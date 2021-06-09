@@ -65,6 +65,5 @@ class AdminUtilsController extends AbstractController
 
 
         return new JsonResponse($response);
-
     }
 }

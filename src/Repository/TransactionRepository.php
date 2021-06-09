@@ -44,7 +44,7 @@ class TransactionRepository extends ServiceEntityRepository
 
         $result = [];
         while (($row = $stmt->fetchAssociative()) !== false) {
-          $result[]=$row;
+            $result[] = $row;
         }
 
         return $result;
@@ -53,8 +53,8 @@ class TransactionRepository extends ServiceEntityRepository
     public function filterTransaction(
         User $user,
         array $filters,
-        ?Course $course)
-    {
+        ?Course $course
+    ) {
 
         $filterType = null;
         $filterExpired = null;
@@ -62,7 +62,6 @@ class TransactionRepository extends ServiceEntityRepository
 
         if ($filters) {
             if (array_key_exists('type', $filters['filter'])) {
-
                 $filterType = $filters['filter']['type']; //тип транзакции payment|deposit
             }
 
@@ -104,5 +103,4 @@ class TransactionRepository extends ServiceEntityRepository
 
         return $query->execute();
     }
-
 }
