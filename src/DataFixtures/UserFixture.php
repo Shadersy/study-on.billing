@@ -22,7 +22,7 @@ class UserFixture extends Fixture
         $admin->setEmail('admin@mail.ru');
         $admin->setPassword(password_hash('qwerty', PASSWORD_DEFAULT));
         $admin->setRoles($admins);
-        $admin->setBalance(rand(0, 1000) / 10);
+        $admin->setBalance(5000);
 
         $user->setEmail('shadersy98@mail.ru');
         $user->setPassword(password_hash('qwerty', PASSWORD_DEFAULT));

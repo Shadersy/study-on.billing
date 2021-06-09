@@ -107,7 +107,6 @@ class TransactionController extends AbstractController
         $bearerToken = $request->headers->get('Authorization');
 
         $sum = $request->attributes->get(['_route_params'][0])['sum'];
-
         $response = $this->paymentService->deposite($sum, $bearerToken);
 
         return new JsonResponse($response);

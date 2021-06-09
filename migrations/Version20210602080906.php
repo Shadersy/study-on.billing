@@ -34,6 +34,7 @@ final class Version20210602080906 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_723705D1ED766068 ON transaction (username_id)');
         $this->addSql('ALTER TABLE transaction ADD CONSTRAINT FK_723705D1591CC992 FOREIGN KEY (course_id) REFERENCES course (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE transaction ADD CONSTRAINT FK_723705D1ED766068 FOREIGN KEY (username_id) REFERENCES billing_user (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+	$this->addSql('ALTER TABLE transaction ALTER column end_of_rent drop not null');
     }
 
     public function down(Schema $schema): void

@@ -77,6 +77,7 @@ class PaymentService extends AbstractController
             return ['success' => 'true', 'balance' => $user->getBalance(), 'sum' => $sum];
 
         } catch (Exception $e) {
+
             $em->getConnection()->rollBack();
             return ['code' => '406', 'message' => 'Невозможно произвести операцию'];
 

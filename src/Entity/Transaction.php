@@ -33,8 +33,7 @@ class Transaction
     private $value;
 
     /**
-     * @ORM\Column(name="end_of_rent", type="datetime")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\Column(name="end_of_rent", type="datetime", nullable=true)
      */
     public $endOfRent;
 

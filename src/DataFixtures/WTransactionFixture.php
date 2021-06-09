@@ -11,6 +11,8 @@ class WTransactionFixture extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        $universalDate = new \DateTime('10-10-2021');
+
         $courseRepo = $manager->getRepository('App\Entity\Course');
         $userRepo = $manager->getRepository('App\Entity\User');
 
@@ -23,29 +25,39 @@ class WTransactionFixture extends Fixture
         $transactionOne = new Transaction();
         $transactionOne->setCourse($barberCourse);
         $transactionOne->setUsername($adminUser);
-        $transactionOne->setCreatedAt(new \DateTime());
-        $transactionOne->setOperationType($barberCourse->getCourseType());
+
+        $transactionOne->setCreatedAt($universalDate);
+        $transactionOne->setOperationType(0);
         $transactionOne->setValue($barberCourse->getCost());
 
         $transactionTwo = new Transaction();
         $transactionTwo->setCourse($gosCourse);
         $transactionTwo->setUsername($adminUser);
-        $transactionTwo->setCreatedAt(new \DateTime());
-        $transactionTwo->setOperationType($gosCourse->getCourseType());
+        $transactionTwo->setCreatedAt($universalDate);
+        $transactionTwo->setOperationType(0);
         $transactionTwo->setValue($gosCourse->getCost());
 
 
         $transactionThird = new Transaction();
         $transactionThird->setCourse($landshaftCourse);
         $transactionThird->setUsername($adminUser);
-        $transactionThird->setCreatedAt(new \DateTime());
-        $transactionThird->setOperationType($landshaftCourse->getCourseType());
+        $transactionThird->setCreatedAt($universalDate);
+        $transactionThird->setOperationType(0);
         $transactionThird->setValue($landshaftCourse->getCost());
-        $transactionThird->setEndOfRent((new \DateTime())->modify('+1 week'));
+        $transactionThird->setEndOfRent(($universalDate)->modify('+1 week'));
+
+
+        $depositeTransaction = new Transaction();
+        $depositeTransaction->setUsername($adminUser);
+        $depositeTransaction->setCreatedAt($universalDate);
+        $depositeTransaction->setOperationType(1);
+        $depositeTransaction->setValue(50);
+
 
         $manager->persist($transactionOne);
         $manager->persist($transactionTwo);
         $manager->persist($transactionThird);
+        $manager->persist($depositeTransaction);
         $manager->flush();
     }
 
